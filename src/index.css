@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --font-title: 'Playfair Display', serif;
+  --font-luxury: 'Cormorant Garamond', serif;
+  --font-vogue: 'Bodoni Moda', serif;
+  --font-cinzel: 'Cinzel', serif;
+  /* L'ajout de 'Tajawal' ici gère l'arabe de manière élégante et uniforme */
+  --font-clean: 'Plus Jakarta Sans', 'Tajawal', sans-serif;
+  --font-modern: 'Syne', sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
