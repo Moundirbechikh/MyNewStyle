@@ -53,7 +53,7 @@ function Navbar() {
       </nav>
 
       {/* 3. Icônes d'action + Sélecteur de Langue (Bulle Droite) */}
-      <div className="absolute right-6 md:right-8 top-0 flex items-center gap-3 md:gap-4 bg-white/95 backdrop-blur-sm px-4 md:px-6 py-3.5 rounded-full shadow-sm text-gray-800 pointer-events-auto">
+      <div className="absolute right-2 md:right-8 top-0 flex items-center gap-2 md:gap-4 bg-white/95 backdrop-blur-sm px-4 md:px-6 py-3.5 rounded-full shadow-sm text-gray-800 pointer-events-auto">
         
         {/* --- AJOUT: Sélecteur de Langue (Custom Dropdown) --- */}
         <div className="relative font-clean">

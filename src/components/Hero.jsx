@@ -64,7 +64,7 @@ function Hero() {
         {/* Titre */}
         <motion.h1 
           variants={itemVariants}
-          className="text-6xl md:text-8xl rtl:text-7xl rtl:md:text-[8rem] text-[#161f33] leading-[1.1] font-clean tracking-tighter"
+          className="text-5xl md:text-8xl rtl:text-7xl rtl:md:text-[8rem] text-[#161f33] leading-[1.1] font-clean tracking-tighter"
         >
           {isAr ? (
               t('hero_title').split(' ').map((word, i) => (
