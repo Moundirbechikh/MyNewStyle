@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import logo from '../assets/logostyle.png';
+import logo from '../assets/logostyle_bleu.png';
 import bgVideo from '../assets/BG.mp4';
 import HeroCard from './HeroCard';
 
