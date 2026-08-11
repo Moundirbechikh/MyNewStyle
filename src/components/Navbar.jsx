@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 
 function Navbar() {
   const { t, i18n } = useTranslation();
+  const location = useLocation();
+
   const [langMenuOpen, setLangMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // States pour les nouveaux effets (Scroll + Hover pilule)
+  // States pour les effets (Scroll + Hover pilule)
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('nav_home');
   const [hoveredSection, setHoveredSection] = useState(null);
@@ -26,21 +29,62 @@ function Navbar() {
 
   const currentLanguage = languages.find(l => l.code === i18n.language) || languages[0];
 
+  // Configuration des liens adaptés au React Router
   const navLinks = [
-    { key: "nav_home", href: "#home" },
-    { key: "nav_shop", href: "#shop" },
-    { key: "nav_new", href: "#new-arrivals" },
-    { key: "nav_categories", href: "#categories" },
-    { key: "nav_about", href: "#about" },
-    { key: "nav_contact", href: "#contact" }
+    { key: "nav_home", to: "/", hash: "home" },
+    { key: "nav_shop", to: "/shop", hash: "" },
+    { key: "nav_categories", to: "/#categories", hash: "categories" },
+    { key: "nav_new", to: "/#new-arrivals", hash: "new-arrivals" },
+    { key: "nav_about", to: "/#about", hash: "about" },
+    { key: "nav_contact", to: "/#contact", hash: "contact" }
   ];
 
-  // Effet de Scroll pour la bordure et le marqueur actif
+  // --- NOUVEAU : Gère le clic sur les liens d'ancrage avec Smooth Scroll ---
+  const handleNavClick = (e, link) => {
+    // Si on est déjà sur la page Home et qu'on clique sur un lien avec un Hash
+    if (location.pathname === '/' && link.hash) {
+      e.preventDefault(); // On empêche React Router de "recharger" la vue bêtement
+      
+      if (link.hash === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.history.pushState(null, '', '/'); 
+      } else {
+        const element = document.getElementById(link.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          window.history.pushState(null, '', link.to); // Met à jour l'URL visuellement
+        }
+      }
+    }
+    setActiveSection(link.key);
+    setIsMobileMenuOpen(false); // Ferme le menu mobile si ouvert
+  };
+
+  // --- NOUVEAU : Scrolle vers la section si on arrive depuis la page /shop avec un hash ---
   useEffect(() => {
+    if (location.pathname === '/' && location.hash) {
+      const id = location.hash.replace('#', '');
+      // Petit délai nécessaire pour laisser le composant Home se monter dans le DOM
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location]);
+
+  // Effet de Scroll & détection de la section active lors du défilement
+  useEffect(() => {
+    if (location.pathname === '/shop') {
+      setActiveSection('nav_shop');
+      return;
+    }
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      const sections = navLinks.map(link => link.href.substring(1));
+      const sections = ['home', 'categories', 'new-arrivals', 'about', 'contact'];
       let current = 'nav_home';
       
       for (const section of sections) {
@@ -48,7 +92,7 @@ function Navbar() {
         if (element) {
           const rect = element.getBoundingClientRect();
           if (rect.top <= 150 && rect.bottom >= 150) {
-            const activeLink = navLinks.find(link => link.href === `#${section}`);
+            const activeLink = navLinks.find(link => link.hash === section);
             if (activeLink) current = activeLink.key;
           }
         }
@@ -56,37 +100,36 @@ function Navbar() {
       setActiveSection(current);
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   return (
     <motion.header 
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      /* Ton positionnement initial exact */
       className="fixed top-3 left-0 w-full px-6 md:px-8 flex justify-center z-50 pointer-events-none"
     >
       
-      {/* 2. Liens (Bulle Centrale) */}
+      {/* 1. Liens (Bulle Centrale) */}
       <nav className={`hidden lg:flex items-center gap-8 bg-white/95 backdrop-blur-sm px-8 py-3.5 rounded-full pointer-events-auto transition-all duration-300 border ${scrolled ? 'border-[#1b2a4a] shadow-md shadow-[#1b2a4a]/20' : 'border-transparent shadow-sm'}`}>
         {navLinks.map((link) => {
           const isActive = activeSection === link.key;
           const isHovered = hoveredSection === link.key;
 
           return (
-            <a 
+            <Link 
               key={link.key}
-              href={link.href} 
+              to={link.to} 
               onMouseEnter={() => setHoveredSection(link.key)}
               onMouseLeave={() => setHoveredSection(null)}
-              onClick={() => setActiveSection(link.key)}
-              /* Switch du texte en blanc avec ton design initial (font-clean text-sm font-bold) */
+              onClick={(e) => handleNavClick(e, link)}
               className={`relative font-clean text-sm font-bold transition-colors duration-300 whitespace-nowrap z-10
                 ${isActive || isHovered ? 'text-white' : 'text-gray-800'}`}
             >
-              {/* Le background switch bleu positionné en arrière-plan avec -inset pour ne pas casser ton gap-8 */}
+              {/* Fond dynamique (Pilule bleue) */}
               {(isActive || isHovered) && (
                 <motion.div
                   layoutId="nav-pill"
@@ -95,12 +138,12 @@ function Navbar() {
                 />
               )}
               {t(link.key)}
-            </a>
+            </Link>
           );
         })}
       </nav>
 
-      {/* 3. Icônes d'action + Sélecteur de Langue (Bulle Droite) */}
+      {/* 2. Icônes d'action + Sélecteur de Langue (Bulle Droite) */}
       <div className={`absolute right-2 md:right-8 top-0 flex items-center gap-2 md:gap-4 bg-white/95 backdrop-blur-sm px-4 md:px-6 py-3.5 rounded-full pointer-events-auto transition-all duration-300 border ${scrolled ? 'border-[#1b2a4a] shadow-md shadow-[#1b2a4a]/20' : 'border-transparent shadow-sm'}`}>
         
         {/* --- Sélecteur de Langue --- */}
@@ -180,8 +223,8 @@ function Navbar() {
 
         {/* Menu Hamburger pour Mobile */}
         <button 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden hover:text-[#1b2a4a] text-gray-800 transition-colors ml-1 p-1"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="lg:hidden hover:text-[#1b2a4a] text-gray-800 transition-colors ml-1 p-1"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             {isMobileMenuOpen ? (
@@ -193,7 +236,7 @@ function Navbar() {
         </button>
       </div>
 
-      {/* --- MENU OVERLAY MOBILE (Nouveau Design Clean) --- */}
+      {/* --- MENU OVERLAY MOBILE --- */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div 
@@ -208,13 +251,10 @@ function Navbar() {
                 const isActive = activeSection === link.key;
                 
                 return (
-                  <a 
+                  <Link 
                     key={link.key} 
-                    href={link.href} 
-                    onClick={() => {
-                      setActiveSection(link.key);
-                      setIsMobileMenuOpen(false);
-                    }}
+                    to={link.to} 
+                    onClick={(e) => handleNavClick(e, link)}
                     className={`flex items-center justify-between text-sm font-bold py-3 px-4 rounded-xl transition-all duration-300
                       ${isActive 
                         ? 'bg-[#1b2a4a] text-white translate-x-1 shadow-md' 
@@ -227,7 +267,7 @@ function Navbar() {
                         <path d="M9 18l6-6-6-6"/>
                       </svg>
                     )}
-                  </a>
+                  </Link>
                 );
               })}
             </div>

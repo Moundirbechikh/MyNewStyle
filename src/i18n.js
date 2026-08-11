@@ -78,7 +78,31 @@ const resources = {
       "footer_email": "Customer Support (Email)",
       "footer_terms": "Terms of Service",
       "footer_privacy": "Privacy Policy",
-      "footer_rights": "© 2026 MyNewStyle. All rights reserved."
+      "footer_rights": "© 2026 MyNewStyle. All rights reserved.",
+      // --- NOUVEAU : Shop Section & Filtres ---
+      "shop_title": "Explore Our Collection",
+      "shop_desc": "Find the perfect pieces with our precision filtering system.",
+      "filter_adv": "Advanced Filters",
+      "filter_reset": "Reset",
+      "filter_search": "Search",
+      "filter_search_placeholder": "Item name...",
+      "filter_gender": "Gender",
+      "filter_all": "All",
+      "filter_men": "Men",
+      "filter_women": "Women",
+      "filter_unisex": "Unisex",
+      "filter_category": "Category",
+      "filter_cat_all": "All categories",
+      "filter_price_max": "Max Price",
+      "filter_size": "Size",
+      "filter_size_all": "All",
+      "shop_empty": "No items match your search criteria.",
+
+      // --- NOUVEAU : Product Card ---
+      "prod_stock": "Stock",
+      "prod_out_of_stock": "Out of stock",
+      "prod_add_cart": "Add to cart",
+      "prod_unavailable": "Unavailable"
     }
   },
   fr: {
@@ -156,7 +180,31 @@ const resources = {
       "footer_email": "Support Client (E-mail)",
       "footer_terms": "Conditions d'utilisation",
       "footer_privacy": "Politique de confidentialité",
-      "footer_rights": "© 2026 MyNewStyle. Tous droits réservés."
+      "footer_rights": "© 2026 MyNewStyle. Tous droits réservés.",
+      // --- NOUVEAU : Shop Section & Filtres ---
+      "shop_title": "Explorer notre Collection",
+      "shop_desc": "Trouvez les pièces idéales grâce à notre système de filtrage de précision.",
+      "filter_adv": "Filtres Avancés",
+      "filter_reset": "Réinitialiser",
+      "filter_search": "Rechercher",
+      "filter_search_placeholder": "Nom de l'article...",
+      "filter_gender": "Genre / Sexe",
+      "filter_all": "Tous",
+      "filter_men": "Homme",
+      "filter_women": "Femme",
+      "filter_unisex": "Unisexe",
+      "filter_category": "Catégorie",
+      "filter_cat_all": "Toutes les catégories",
+      "filter_price_max": "Prix Max",
+      "filter_size": "Taille",
+      "filter_size_all": "Toutes",
+      "shop_empty": "Aucun article ne correspond à vos critères de recherche.",
+
+      // --- NOUVEAU : Product Card ---
+      "prod_stock": "Stock",
+      "prod_out_of_stock": "Rupture",
+      "prod_add_cart": "Ajouter au panier",
+      "prod_unavailable": "Indisponible"
     }
   },
   ar: {
@@ -234,7 +282,30 @@ const resources = {
       "footer_email": "دعم العملاء (البريد الإلكتروني)",
       "footer_terms": "شروط الخدمة",
       "footer_privacy": "سياسة الخصوصية",
-      "footer_rights": "© 2026 MyNewStyle. جميع الحقوق محفوظة."
+      "footer_rights": "© 2026 MyNewStyle. جميع الحقوق محفوظة.",
+      "shop_title": "استكشف مجموعتنا",
+      "shop_desc": "اعثر على القطع المثالية بفضل نظام الفلترة الدقيق لدينا.",
+      "filter_adv": "فلاتر متقدمة",
+      "filter_reset": "إعادة ضبط",
+      "filter_search": "بحث",
+      "filter_search_placeholder": "اسم المنتج...",
+      "filter_gender": "الجنس",
+      "filter_all": "الكل",
+      "filter_men": "رجال",
+      "filter_women": "نساء",
+      "filter_unisex": "للجنسين",
+      "filter_category": "الفئة",
+      "filter_cat_all": "جميع الفئات",
+      "filter_price_max": "الحد الأقصى للسعر",
+      "filter_size": "المقاس",
+      "filter_size_all": "الكل",
+      "shop_empty": "لا توجد عناصر تطابق معايير البحث الخاصة بك.",
+
+      // --- NOUVEAU : Product Card ---
+      "prod_stock": "المخزون",
+      "prod_out_of_stock": "نفدت الكمية",
+      "prod_add_cart": "أضف إلى السلة",
+      "prod_unavailable": "غير متوفر"
     }
   }
 };
