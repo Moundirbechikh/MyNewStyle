@@ -28,8 +28,8 @@ const resources = {
       "bestseller_3_cat": "Men's Pants",
       "btn_see_more": "See more",
 
-      // Shop By Category Section
-      "sec_category_title": "Shop by Category",
+      // Shop By Category Section (Mis à jour)
+      "sec_category_title": "Our Entire Collection",
       "sec_category_desc": "Essentials for every wardrobe",
       "btn_view_all": "View all",
       "cat_tshirts": "T-Shirts",
@@ -63,11 +63,19 @@ const resources = {
       "rev_3_role": "Verified Buyer",
       "rev_3_text": "Minimalist perfection. The signature hoodie is the most comfortable piece of clothing I own.",
 
-      // 3D Card & Buttons
+      // 3D Card & Buttons (Textes originaux + Nouveaux ajouts)
       "card_3d_front_text": "Pure elegance, tailored to elevate your everyday life.",
       "card_3d_back_title": "Our Collection",
       "card_3d_back_text": "Discover numerous exclusive items and explore our latest online catalog.",
       "btn_see_more_3d": "See More",
+      
+      "card_women_front": "Women",
+      "card_women_back_title": "Women's Collection",
+      "card_women_back_desc": "Discover our exclusive selection of oversized hoodies, premium t-shirts, and trendy pants, available in a wide range of colors.",
+      "card_men_front": "Men",
+      "card_men_back_title": "Men's Collection",
+      "card_men_back_desc": "Explore our range of urban wear: comfortable hoodies, essential t-shirts, and stylish pants, available in multiple colors.",
+      "mobile_desc": "Discover our hoodies, t-shirts, and pants available in a wide range of colors.",
 
       // Footer
       "footer_desc": "Elevating your everyday wardrobe with premium essentials and timeless aesthetics.",
@@ -79,7 +87,8 @@ const resources = {
       "footer_terms": "Terms of Service",
       "footer_privacy": "Privacy Policy",
       "footer_rights": "© 2026 MyNewStyle. All rights reserved.",
-      // --- NOUVEAU : Shop Section & Filtres ---
+      
+      // --- Shop Section & Filtres ---
       "shop_title": "Explore Our Collection",
       "shop_desc": "Find the perfect pieces with our precision filtering system.",
       "filter_adv": "Advanced Filters",
@@ -98,7 +107,7 @@ const resources = {
       "filter_size_all": "All",
       "shop_empty": "No items match your search criteria.",
 
-      // --- NOUVEAU : Product Card ---
+      // --- Product Card ---
       "prod_stock": "Stock",
       "prod_out_of_stock": "Out of stock",
       "prod_add_cart": "Add to cart",
@@ -130,8 +139,8 @@ const resources = {
       "bestseller_3_cat": "Pantalon Homme",
       "btn_see_more": "Voir plus",
 
-      // Shop By Category Section
-      "sec_category_title": "Acheter par Catégorie",
+      // Shop By Category Section (Mis à jour)
+      "sec_category_title": "L'intégralité de nos articles",
       "sec_category_desc": "Les essentiels pour chaque garde-robe",
       "btn_view_all": "Voir tout",
       "cat_tshirts": "T-Shirts",
@@ -165,11 +174,19 @@ const resources = {
       "rev_3_role": "Acheteur Vérifié",
       "rev_3_text": "La perfection minimaliste. Le hoodie signature est la pièce la plus confortable que je possède.",
 
-      // 3D Card & Buttons
+      // 3D Card & Buttons (Textes originaux + Nouveaux ajouts)
       "card_3d_front_text": "L'élégance à l'état pur, taillée pour sublimer votre quotidien.",
       "card_3d_back_title": "Notre Collection",
       "card_3d_back_text": "Découvrez de nombreux articles exclusifs et explorez notre tout dernier catalogue en ligne.",
       "btn_see_more_3d": "Voir Plus",
+      
+      "card_women_front": "Femme",
+      "card_women_back_title": "Collection Femme",
+      "card_women_back_desc": "Découvrez notre sélection exclusive de hoodies oversize, t-shirts premium et pantalons tendance, disponibles dans une large gamme de couleurs.",
+      "card_men_front": "Homme",
+      "card_men_back_title": "Collection Homme",
+      "card_men_back_desc": "Explorez notre gamme de vêtements urbains : hoodies confortables, t-shirts essentiels et pantalons stylés, déclinés dans de multiples coloris.",
+      "mobile_desc": "Découvrez nos hoodies, t-shirts et pantalons disponibles dans une large gamme de couleurs.",
 
       // Footer
       "footer_desc": "Élever votre garde-robe quotidienne avec des essentiels premium et une esthétique intemporelle.",
@@ -181,7 +198,8 @@ const resources = {
       "footer_terms": "Conditions d'utilisation",
       "footer_privacy": "Politique de confidentialité",
       "footer_rights": "© 2026 MyNewStyle. Tous droits réservés.",
-      // --- NOUVEAU : Shop Section & Filtres ---
+      
+      // --- Shop Section & Filtres ---
       "shop_title": "Explorer notre Collection",
       "shop_desc": "Trouvez les pièces idéales grâce à notre système de filtrage de précision.",
       "filter_adv": "Filtres Avancés",
@@ -200,7 +218,7 @@ const resources = {
       "filter_size_all": "Toutes",
       "shop_empty": "Aucun article ne correspond à vos critères de recherche.",
 
-      // --- NOUVEAU : Product Card ---
+      // --- Product Card ---
       "prod_stock": "Stock",
       "prod_out_of_stock": "Rupture",
       "prod_add_cart": "Ajouter au panier",
@@ -212,98 +230,108 @@ const resources = {
       // Navbar
       "nav_home": "الرئيسية",
       "nav_shop": "المتجر",
-      "nav_new": "وصلنا حديثاً",
-      "nav_categories": "الفئات",
+      "nav_new": "وصل حديثاً",
+      "nav_categories": "الأقسام",
       "nav_about": "من نحن",
       "nav_contact": "اتصل بنا",
       
       // Hero
       "hero_title": "ارتدِ ثقتك.",
-      "hero_desc": "اكتشف التيشيرتات، والهوديز، والبلاطين الفاخرة المصممة للراحة اليومية والأسلوب الخالد.",
+      "hero_desc": "اكتشف قمصان، سترات وسراويل عالية الجودة مصممة للراحة اليومية والأناقة الدائمة.",
       "btn_shop": "تسوق الآن",
-      "btn_explore": "استكشف المجموعة",
+      "btn_explore": "اكتشف التشكيلة",
       
       // HeroCard (Best Sellers)
-      "bestseller_1_name": "تيشيرت سادة فاخر",
-      "bestseller_1_cat": "تيشيرت رجالي",
-      "bestseller_2_name": "هودي مريح مميز",
-      "bestseller_2_cat": "هودي نسائي",
-      "bestseller_3_name": "بنطلون كارغو مفصل",
-      "bestseller_3_cat": "بنطلون رجالي",
-      "btn_see_more": "عرض المزيد",
+      "bestseller_1_name": "تي شيرت سادة فاخر",
+      "bestseller_1_cat": "تي شيرت رجالي",
+      "bestseller_2_name": "سترة مريحة مميزة",
+      "bestseller_2_cat": "سترة نسائية",
+      "bestseller_3_name": "سروال كارغو مفصل",
+      "bestseller_3_cat": "سروال رجالي",
+      "btn_see_more": "رؤية المزيد",
 
-      // Shop By Category Section
-      "sec_category_title": "تسوق حسب الفئة",
+      // Shop By Category Section (Mis à jour)
+      "sec_category_title": "جميع منتجاتنا",
       "sec_category_desc": "أساسيات لكل خزانة ملابس",
       "btn_view_all": "عرض الكل",
-      "cat_tshirts": "تيشيرتات",
-      "cat_hoodies": "هوديز",
-      "cat_pants": "بناطيل",
-      "btn_cat_explore": "استكشف",
+      "cat_tshirts": "تي شيرتات",
+      "cat_hoodies": "سترات",
+      "cat_pants": "سراويل",
+      "btn_cat_explore": "اكتشف",
 
       // Why Us Section
       "sec_why_badge": "تجربة MYNEWSTYLE",
-      "sec_why_title": "لماذا تشتري من متجرنا؟",
-      "sec_why_desc": "نجمع بين جودة التصنيع العالية، والقصات الخالدة، والتوصيل السريع لنمنحك ثقة وأناقة لا مثيل لهما.",
+      "sec_why_title": "لماذا تطلب منا؟",
+      "sec_why_desc": "نحن نجمع بين الحرفية العالية، القصات الدائمة والتوصيل السلس لنقدم لك ثقة لا مثيل لها.",
       
-      "why_1_title": "أقمشة فاخرة ممتازة",
-      "why_1_desc": "قطن ثقيل 100% يدعم التهوية ومصمم بلمسات نهائية متينة ليدوم طويلاً.",
-      "why_2_title": "قصة وتصميم مثاليان",
-      "why_2_desc": "مصممة لتتناسب بسلاسة مع جسمك وتمنحك أناقة عفوية وراحة ممتدة طوال اليوم.",
-      "why_3_title": "توصيل سريع وآمن",
-      "why_3_desc": "شحن سريع ومباشر إلى باب منزلك مع إمكانية تتبع شحنتك وتحديثات مستمرة.",
-      "why_4_title": "جودة ورضا مضمونان",
-      "why_4_desc": "عملية استبدال سهلة وفريق خدمة عملاء مخصص في خدمتك في أي وقت.",
+      "why_1_title": "أقمشة فاخرة",
+      "why_1_desc": "قطن 100% ثقيل الوزن وقابل للتنفس بلمسات نهائية عالية الجودة لتحمل الاستخدام والغسيل اليومي.",
+      "why_2_title": "قصة مفصلة مثالية",
+      "why_2_desc": "مصممة لتنسدل بشكل طبيعي على جسمك، مما يمنحك أناقة وراحة طوال اليوم.",
+      "why_3_title": "شحن سريع وآمن",
+      "why_3_desc": "معالجة سريعة للطلبات وتوصيل مباشر إلى باب منزلك مع تحديثات تتبع في الوقت الفعلي.",
+      "why_4_title": "رضا مضمون",
+      "why_4_desc": "استبدال سهل وفريق خدمة عملاء مخصص جاهز لمساعدتك وقتما تشاء.",
 
       // Reviews Section
       "sec_reviews_title": "ماذا يقول عملاؤنا",
       "rev_1_name": "جيمس د.",
-      "rev_1_role": "مشتري موثق",
-      "rev_1_text": "جودة هذه الأساسيات غير مسبوقة. أصبح التيشيرت الثقيل خياري اليومي.",
+      "rev_1_role": "مشتري معتمد",
+      "rev_1_text": "جودة هذه الأساسيات غير مسبوقة. أصبح التي شيرت الثقيل هو خياري اليومي.",
       "rev_2_name": "سارة م.",
-      "rev_2_role": "مشترية موثقة",
-      "rev_2_text": "أنا مهووسة بالقصة المثالية للبناطيل. مريحة جداً وأنيقة في نفس الوقت.",
+      "rev_2_role": "مشتري معتمد",
+      "rev_2_text": "أنا مهووسة بالقصة المثالية للسراويل. إنها مريحة للغاية وتبدو أنيقة جداً.",
       "rev_3_name": "مايكل ر.",
-      "rev_3_role": "مشتري موثق",
-      "rev_3_text": "الكمال البسيط. الهودي المميز هو القطعة الأكثر راحة لدي.",
+      "rev_3_role": "مشتري معتمد",
+      "rev_3_text": "الكمال البسيط. السترة المميزة هي أكثر قطعة ملابس مريحة أمتلكها.",
 
-      // 3D Card & Buttons
-      "card_3d_front_text": "أناقة خالصة، مصممة لترتقي بحياتك اليومية.",
-      "card_3d_back_title": "مجموعتنا",
-      "card_3d_back_text": "اكتشف العديد من العناصر الحصرية وتصفح أحدث كتالوجاتنا عبر الإنترنت.",
-      "btn_see_more_3d": "عرض المزيد",
+      // 3D Card & Buttons (Textes originaux + Nouveaux ajouts)
+      "card_3d_front_text": "أناقة خالصة، مصممة للارتقاء بحياتك اليومية.",
+      "card_3d_back_title": "تشكيلتنا",
+      "card_3d_back_text": "اكتشف العديد من العناصر الحصرية وتصفح أحدث كتالوج عبر الإنترنت.",
+      "btn_see_more_3d": "رؤية المزيد",
+      
+      "card_women_front": "نساء",
+      "card_women_back_title": "تشكيلة النساء",
+      "card_women_back_desc": "اكتشف تشكيلتنا الحصرية من السترات الفضفاضة، والقمصان الفاخرة، والسراويل العصرية، متوفرة بمجموعة واسعة من الألوان.",
+      "card_men_front": "رجال",
+      "card_men_back_title": "تشكيلة الرجال",
+      "card_men_back_desc": "اكتشف مجموعتنا من الملابس الحضرية: سترات مريحة، قمصان أساسية وسراويل أنيقة، متوفرة بألوان متعددة.",
+      "mobile_desc": "اكتشف ستراتنا، قمصاننا وسراويلنا المتوفرة بمجموعة واسعة من الألوان.",
 
       // Footer
-      "footer_desc": "الارتقاء بخزانة ملابسك اليومية بأساسيات فاخرة وجماليات خالدة.",
+      "footer_desc": "الارتقاء بخزانة ملابسك اليومية بأساسيات فاخرة وجماليات دائمة.",
       "footer_links": "روابط سريعة",
-      "footer_order_title": "الطلب المباشر",
-      "footer_order_desc": "يتم التعامل مع جميع طلباتنا مباشرة من قبل فريقنا لضمان تجربة مخصصة لك.",
+      "footer_order_title": "طلب مباشر",
+      "footer_order_desc": "تتم معالجة جميع الطلبات مباشرة من قبل فريقنا لضمان تجربة مخصصة.",
       "footer_phone": "الهاتف / واتساب",
       "footer_email": "دعم العملاء (البريد الإلكتروني)",
       "footer_terms": "شروط الخدمة",
       "footer_privacy": "سياسة الخصوصية",
       "footer_rights": "© 2026 MyNewStyle. جميع الحقوق محفوظة.",
-      "shop_title": "استكشف مجموعتنا",
-      "shop_desc": "اعثر على القطع المثالية بفضل نظام الفلترة الدقيق لدينا.",
-      "filter_adv": "فلاتر متقدمة",
-      "filter_reset": "إعادة ضبط",
+      
+      // --- Shop Section & Filtres ---
+      "shop_title": "اكتشف تشكيلتنا",
+      "shop_desc": "ابحث عن القطع المثالية باستخدام نظام التصفية الدقيق الخاص بنا.",
+      "filter_adv": "عوامل تصفية متقدمة",
+      "filter_reset": "إعادة تعيين",
       "filter_search": "بحث",
-      "filter_search_placeholder": "اسم المنتج...",
+      "filter_search_placeholder": "اسم العنصر...",
       "filter_gender": "الجنس",
       "filter_all": "الكل",
       "filter_men": "رجال",
       "filter_women": "نساء",
       "filter_unisex": "للجنسين",
-      "filter_category": "الفئة",
-      "filter_cat_all": "جميع الفئات",
+      "filter_category": "القسم",
+      "filter_cat_all": "جميع الأقسام",
       "filter_price_max": "الحد الأقصى للسعر",
       "filter_size": "المقاس",
       "filter_size_all": "الكل",
       "shop_empty": "لا توجد عناصر تطابق معايير البحث الخاصة بك.",
 
-      // --- NOUVEAU : Product Card ---
+      // --- Product Card ---
       "prod_stock": "المخزون",
-      "prod_out_of_stock": "نفدت الكمية",
+      "prod_out_of_stock": "نفد المخزون",
       "prod_add_cart": "أضف إلى السلة",
       "prod_unavailable": "غير متوفر"
     }

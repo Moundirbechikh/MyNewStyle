@@ -50,7 +50,7 @@ function Hero() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="absolute left-6 md:left-6 top-6 cursor-pointer pointer-events-auto z-20"
       >
-        <img src={logo} alt="MyNewStyle Logo" className="h-16 md:h-16 lg:h-24 object-contain" />
+        <img src={logo} alt="MyNewStyle Logo" className="h-14 md:h-16 lg:h-20 object-contain" />
       </motion.div>
 
       {/* 3. Contenu Textuel et Boutons : Géré par le stagger (cascade) */}

@@ -13,9 +13,6 @@ function ShopSection() {
   // Référence pour le défilement automatique vers la boutique
   const shopGridRef = useRef(null);
 
-  // État pour gérer la disparition du titre principal sur Desktop au survol (Non utilisé ici car le titre est fixe)
-  const [hoveredSide, setHoveredSide] = useState(null);
-
   // État pour gérer le slider mobile (0 = Femme, 1 = Homme)
   const [mobileBgIndex, setMobileBgIndex] = useState(0);
   const mobileBackgrounds = [bg2, bg1];
@@ -131,16 +128,17 @@ function ShopSection() {
       {/* ======================================================== */}
       {/* 1. HERO SECTION FULL SCREEN (Desktop & Mobile)           */}
       {/* ======================================================== */}
-      <section className="relative h-screen w-full overflow-hidden">
+      {/* Changement ici: h-[100dvh] force la taille de l'écran mobile parfaitement */}
+      <section className="relative h-[100dvh] w-full overflow-hidden">
         
-        {/* LOGO GLOABAL - Remis à sa place d'origine (top-6) */}
+        {/* LOGO GLOABAL */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="absolute left-6 md:left-12 top-6 cursor-pointer pointer-events-auto z-50 mix-blend-difference"
+          className="absolute left-6 md:left-6 top-6 cursor-pointer pointer-events-auto z-50 mix-blend-difference"
         >
-          <img src={logo} alt="MyNewStyle Logo" className="h-12 md:h-16 lg:h-20 object-contain  invert" />
+          <img src={logo} alt="MyNewStyle Logo" className="h-14 md:h-16 lg:h-20 object-contain invert" />
         </motion.div>
 
         {/* --- VUE DESKTOP (Vidéo + Textes fixes + Cartes 3D) --- */}
@@ -157,7 +155,7 @@ function ShopSection() {
           
           <div className="absolute inset-0 bg-black/40 pointer-events-none"></div>
 
-          {/* TITRE ET DESCRIPTION (Fixes au centre haut) */}
+          {/* TITRE ET DESCRIPTION */}
           <div className="absolute top-32 inset-x-0 flex flex-col items-center justify-start pointer-events-none z-10">
             <h1 className="text-6xl lg:text-8xl font-bold text-white tracking-tight mb-6 drop-shadow-lg">
               {t('shop_title')}
@@ -167,8 +165,8 @@ function ShopSection() {
             </p>
           </div>
 
-          {/* ZONES DE HOVER DÉLIMITÉES EN BAS (padding 10 bas, 8 côtés) */}
-          <div className="absolute bottom-4 inset-x-0 w-full px-8  lg:px-12 z-20 flex justify-between gap-8 lg:gap-12">
+ {/* ZONES DE HOVER DÉLIMITÉES EN BAS */}
+ <div className="absolute bottom-4 inset-x-0 w-full px-8 lg:px-12 z-20 flex justify-between gap-8 lg:gap-12">
             
             {/* GAUCHE : FEMME */}
             <div 
@@ -177,18 +175,20 @@ function ShopSection() {
             >
               <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 
-                {/* Face Avant (Border blanc, écriture type bouton au milieu) */}
+                {/* Face Avant */}
                 <div className="absolute inset-0 flex items-center justify-center [backface-visibility:hidden] border-2 lg:border-[3px] border-white/80 hover:border-white rounded-2xl bg-white/5 backdrop-blur-[2px] transition-all duration-300">
-                  <div className=" text-white px-8 py-3 text-6xl lg:text-7xl font-bold uppercase">
-                    Femme
+                  <div className="text-white px-8 py-3 text-6xl lg:text-7xl font-bold uppercase">
+                    {t('card_women_front')}
                   </div>
                 </div>
                 
-                {/* Face Arrière (Blanche) */}
+                {/* Face Arrière */}
                 <div className="absolute inset-0 bg-white/95 backdrop-blur-md flex flex-col items-center justify-center text-center [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl shadow-2xl px-6 lg:px-12 border border-gray-200">
-                  <h4 className="text-[#1b2a4a] text-3xl lg:text-4xl font-bold mb-3 tracking-tight">Collection Femme</h4>
+                  <h4 className="text-[#1b2a4a] text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
+                    {t('card_women_back_title')}
+                  </h4>
                   <p className="text-gray-600 text-xs lg:text-sm mb-6 max-w-md">
-                    Découvrez notre sélection exclusive de hoodies oversize, t-shirts premium et pantalons tendance, disponibles dans une large gamme de couleurs.
+                    {t('card_women_back_desc')}
                   </p>
                   <motion.button 
                     className="border-2 border-[#1b2a4a] text-[#1b2a4a] bg-transparent px-8 py-3 text-xs lg:text-sm tracking-[0.2em] uppercase font-bold hover:bg-[#1b2a4a] hover:text-white transition-colors rounded-none font-clean"
@@ -206,18 +206,20 @@ function ShopSection() {
             >
               <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 
-                {/* Face Avant (Border blanc, écriture type bouton au milieu) */}
+                {/* Face Avant */}
                 <div className="absolute inset-0 flex items-center justify-center [backface-visibility:hidden] border-2 lg:border-[3px] border-white/80 hover:border-white rounded-2xl bg-white/5 backdrop-blur-[2px] transition-all duration-300">
                   <div className="text-white px-8 py-3 text-6xl lg:text-7xl font-bold uppercase">
-                    Homme
+                    {t('card_men_front')}
                   </div>
                 </div>
                 
-                {/* Face Arrière (Bleue) */}
+                {/* Face Arrière */}
                 <div className="absolute inset-0 bg-[#1b2a4a]/95 backdrop-blur-md flex flex-col items-center justify-center text-center [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl shadow-2xl px-6 lg:px-12 border border-white/20">
-                  <h4 className="text-white text-3xl lg:text-4xl font-bold mb-3 tracking-tight">Collection Homme</h4>
+                  <h4 className="text-white text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
+                    {t('card_men_back_title')}
+                  </h4>
                   <p className="text-white/80 text-xs lg:text-sm mb-6 max-w-md">
-                    Explorez notre gamme de vêtements urbains : hoodies confortables, t-shirts essentiels et pantalons stylés, déclinés dans de multiples coloris.
+                    {t('card_men_back_desc')}
                   </p>
                   <motion.button 
                     className="border-2 border-white text-white bg-transparent px-8 py-3 text-xs lg:text-sm tracking-[0.2em] uppercase font-bold hover:bg-white hover:text-black transition-colors rounded-none font-clean"
@@ -231,7 +233,7 @@ function ShopSection() {
           </div>
         </div>
 
-        {/* --- VUE MOBILE (Plein écran avec slider automatique) --- */}
+        {/* --- VUE MOBILE --- */}
         <div className="md:hidden absolute inset-0 z-20">
           
           <AnimatePresence mode="wait">
@@ -256,7 +258,7 @@ function ShopSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-5xl font-bold text-white mb-6 uppercase tracking-widest drop-shadow-lg"
             >
-              {mobileBgIndex === 0 ? 'Femme' : 'Homme'}
+              {mobileBgIndex === 0 ? t('card_women_front') : t('card_men_front')}
             </motion.h2>
 
             <motion.p
@@ -266,7 +268,7 @@ function ShopSection() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-white/95 text-lg font-medium mb-10 max-w-sm drop-shadow-md"
             >
-              Découvrez nos hoodies, t-shirts et pantalons disponibles dans une large gamme de couleurs.
+              {t('mobile_desc')}
             </motion.p>
 
             <motion.button 
@@ -281,7 +283,6 @@ function ShopSection() {
             </motion.button>
           </div>
 
-          {/* Indicateurs de slider (les petits points en bas) */}
           <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-3 z-10">
             <div className={`w-3 h-3 rounded-full transition-colors duration-500 ${mobileBgIndex === 0 ? 'bg-white' : 'bg-white/40'}`}></div>
             <div className={`w-3 h-3 rounded-full transition-colors duration-500 ${mobileBgIndex === 1 ? 'bg-white' : 'bg-white/40'}`}></div>
@@ -293,15 +294,22 @@ function ShopSection() {
       {/* ======================================================== */}
       {/* 2. SECTION BOUTIQUE & FILTRES (Cible du défilement)      */}
       {/* ======================================================== */}
-              {/* Titre et description : Apparaît en premier (délai 0) */}
-              <motion.div variants={fadeUp(0)}
-              className='flex flex-row justify-center mt-10'>
-            <h2 className=" text-4xl md:text-5xl rtl:text-4xl rtl:md:text-5xl text-[#161f33] font-clean tracking-tighter">
-              {t('sec_category_title')}
-            </h2>
-          </motion.div>
-      <section ref={shopGridRef} className="max-w-7xl mx-auto pt-10 pb-24 px-6 md:px-12 lg:px-20 scroll-mt-0">
+      <section ref={shopGridRef} className="max-w-7xl mx-auto pt-16 pb-24 px-6 md:px-12 lg:px-20 scroll-mt-0">
         
+        {/* TITRE PLACÉ ICI : Au-dessus des cartes d'articles et des filtres */}
+        <motion.div 
+          variants={fadeUp(0)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className='flex flex-col items-center justify-center mb-12 text-center'
+        >
+          <h2 className="text-4xl md:text-5xl rtl:text-4xl rtl:md:text-5xl text-[#161f33] font-clean tracking-tighter font-bold">
+            {t('sec_category_title')}
+          </h2>
+          <div className="w-16 h-1 bg-[#1b2a4a] mt-4 rounded-full"></div>
+        </motion.div>
+
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           
           {/* Panneau de Filtrage Latéral */}
