@@ -112,7 +112,7 @@ function AdminDashboard() {
         animate={{ opacity: 1, y: 0 }}
         className="mb-8 sm:mb-10"
       >
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#1b2a4a] tracking-tighter">
+        <h1 className="text-5xl sm:text-6xl lg:text-6xl font-black text-[#1b2a4a] tracking-tighter">
           Tableau de bord
         </h1>
         <div className="w-12 sm:w-16 h-1.5 bg-[#1b2a4a] mt-3 sm:mt-4 rounded-full"></div>
