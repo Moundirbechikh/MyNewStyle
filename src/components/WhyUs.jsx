@@ -1,11 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logostyle.png';
 import bgVideo1 from '../assets/BG1.mp4';
 
 function WhyUs() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const reasons = [
     {
@@ -138,6 +140,7 @@ function WhyUs() {
             ))}
           </div>
           <motion.button 
+            onClick={() => navigate('/shop')}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -164,15 +167,35 @@ function WhyUs() {
           >
             <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] shadow-2xl">
               
-              {/* FACE AVANT */}
-              <div className="absolute inset-0 bg-white/25 p-8 flex flex-col items-center justify-center text-center [backface-visibility:hidden] border border-gray-100 backdrop-blur-sm">
-                <img src={logo} alt="MyNewStyle Logo" className="h-28 mb-8 opacity-90 object-contain" />
-                <p className="font-clean text-gray-900 text-xl italic leading-relaxed p-6 border-2 bg-white/30 border-white">
-                  "{t('card_3d_front_text')}"
-                </p>
+              {/* FACE AVANT — redesignée : dégradé subtil, label de marque, séparateur, guillemet décoratif */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-[#f5f2eb] p-8 flex flex-col items-center justify-center text-center [backface-visibility:hidden] border border-white/60">
+                
+                {/* Label de marque discret en haut */}
+                <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#1b2a4a]/50 mb-8 font-clean">
+                  MyNewStyle
+                </span>
+
+                {/* Logo mis en valeur avec halo doux */}
+                <div className="relative mb-8">
+                  <div className="absolute inset-0 bg-[#1b2a4a]/5 blur-2xl rounded-full scale-150"></div>
+                  <img src={logo} alt="MyNewStyle Logo" className="relative h-24 opacity-90 object-contain" />
+                </div>
+
+                {/* Citation avec guillemet décoratif */}
+                <div className="relative max-w-[280px]">
+                  <span className="absolute -top-6 -left-2 text-6xl text-[#1b2a4a]/10 font-serif select-none leading-none">
+                    "
+                  </span>
+                  <p className="relative font-clean text-gray-800 text-lg italic leading-relaxed">
+                    {t('card_3d_front_text')}
+                  </p>
+                </div>
+
+                {/* Séparateur discret en bas */}
+                <div className="w-12 h-[2px] bg-[#1b2a4a]/30 mt-8"></div>
               </div>
 
-              {/* FACE ARRIÈRE */}
+              {/* FACE ARRIÈRE — bouton navigue directement vers le shop */}
               <div className="absolute inset-0 bg-[#1b2a4a] p-8 flex flex-col items-center justify-center text-center [backface-visibility:hidden] [transform:rotateY(180deg)] border border-[#1b2a4a]">
                 <h4 className="text-white font-clean text-3xl font-bold mb-4 tracking-tight">
                   {t('card_3d_back_title')}
@@ -180,7 +203,10 @@ function WhyUs() {
                 <p className="text-gray-300 font-clean text-base mb-10 leading-relaxed px-4">
                   {t('card_3d_back_text')}
                 </p>
-                <button className="border border-white text-white bg-transparent px-10 py-3 text-sm tracking-[0.2em] uppercase font-bold hover:bg-white hover:text-[#1b2a4a] transition-colors rounded-none font-clean">
+                <button 
+                  onClick={() => navigate('/shop')}
+                  className="border border-white text-white bg-transparent px-10 py-3 text-sm tracking-[0.2em] uppercase font-bold hover:bg-white hover:text-[#1b2a4a] transition-colors rounded-none font-clean"
+                >
                   {t('btn_see_more_3d')}
                 </button>
               </div>

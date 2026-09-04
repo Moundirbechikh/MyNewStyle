@@ -1,23 +1,23 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import logo from '../assets/logostyle_bleu.png';
 import videoBG from '../assets/BG2.mp4';
-import bg1 from '../assets/BG1.png'; // IMPORT MOBILE FEMME
-import bg2 from '../assets/BG2.png'; // IMPORT MOBILE HOMME
+import bg1 from '../assets/BG1.png';
+import bg2 from '../assets/BG2.png';
 import ProductCard from './ProductCard';
 
 function ShopSection() {
   const { t } = useTranslation();
-  
-  // Référence pour le défilement automatique vers la boutique
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
   const shopGridRef = useRef(null);
 
-  // État pour gérer le slider mobile (0 = Femme, 1 = Homme)
   const [mobileBgIndex, setMobileBgIndex] = useState(0);
   const mobileBackgrounds = [bg2, bg1];
-  
-  // Changement d'image toutes les 10 secondes sur mobile
+
   useEffect(() => {
     const interval = setInterval(() => {
       setMobileBgIndex((prevIndex) => (prevIndex === 0 ? 1 : 0));
@@ -27,87 +27,94 @@ function ShopSection() {
 
   const fadeUp = (delay) => ({
     hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.6, delay: delay, ease: "easeOut" } 
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, delay: delay, ease: "easeOut" }
     }
   });
 
-  // --- ÉTATS DES FILTRES ---
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedSex, setSelectedSex] = useState('all'); 
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
+  const [selectedSex, setSelectedSex] = useState(searchParams.get('sex') || 'all');
+  const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || 'all');
   const [selectedSize, setSelectedSize] = useState('all');
   const [maxPrice, setMaxPrice] = useState(25000);
 
-  // MOCK DATA (Données de test)
-  const products = [
-    {
-      id: 1,
-      name: "Oversized Premium Hoodie",
-      price: 12500,
-      category: "hoodies",
-      sex: "men",
-      sizes: ["S", "M", "L", "XL"],
-      colors: [
-        { 
-          name: "Bleu Nuit", hex: "#1b2a4a", 
-          image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&q=80&w=600",
-          stockBySize: { "S": 12, "M": 0, "L": 5, "XL": 2 }
-        },
-        { 
-          name: "Gris", hex: "#9ca3af", 
-          image: "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&q=80&w=600",
-          stockBySize: { "S": 0, "M": 8, "L": 14, "XL": 5 }
-        }
-      ]
-    },
-    {
-      id: 2,
-      name: "Urban Minimalist Jacket",
-      price: 18900,
-      category: "jackets",
-      sex: "unisex",
-      sizes: ["M", "L", "XL"],
-      colors: [
-        { 
-          name: "Noir", hex: "#111827", 
-          image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&q=80&w=600",
-          stockBySize: { "M": 5, "L": 0, "XL": 0 }
-        },
-        { 
-          name: "Beige", hex: "#d4d4d8", 
-          image: "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&q=80&w=600",
-          stockBySize: { "M": 10, "L": 10, "XL": 10 }
-        }
-      ]
-    },
-    {
-      id: 3,
-      name: "Classic Cotton T-Shirt",
-      price: 4500,
-      category: "tshirts",
-      sex: "women",
-      sizes: ["XS", "S", "M"],
-      colors: [
-        { 
-          name: "Blanc", hex: "#ffffff", 
-          image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=600",
-          stockBySize: { "XS": 15, "S": 25, "M": 8 }
-        },
-        { 
-          name: "Bleu Nuit", hex: "#1b2a4a", 
-          image: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&q=80&w=600",
-          stockBySize: { "XS": 0, "S": 0, "M": 0 }
-        }
-      ]
-    }
-  ];
+  const [mode, setMode] = useState(searchParams.get('mode') || 'all');
 
-  const filteredProducts = products.filter(product => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const params = new URLSearchParams();
+        if (mode && mode !== 'all' && mode !== 'new') params.set('mode', mode);
+
+        const res = await fetch(`${apiUrl}/api/products?${params.toString()}`);
+
+        if (!res.ok) {
+          throw new Error('Erreur lors du chargement des produits');
+        }
+
+        const data = await res.json();
+        const formatted = data.map((p) => ({ ...p, id: p._id }));
+        setProducts(formatted);
+        setError(null);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [mode]);
+
+  useEffect(() => {
+    if (searchParams.get('category') || searchParams.get('sex') || searchParams.get('mode') || searchParams.get('search')) {
+      setTimeout(() => {
+        shopGridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 200);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const pageTitleKey = useMemo(() => {
+    if (mode === 'new') return 'shop_title_new';
+    if (mode === 'bestseller') return 'shop_title_bestseller';
+    if (mode === 'promo') return 'shop_title_promo';
+    if (selectedCategory !== 'all') return `shop_title_cat_${selectedCategory}`;
+    return 'sec_category_title';
+  }, [mode, selectedCategory]);
+
+  // "Nouveautés" = articles ajoutés ce mois-ci. Repli automatique sur la liste
+  // complète si rien n'a été ajouté ce mois-ci (jamais de page vide).
+  const isThisMonth = (dateStr) => {
+    if (!dateStr) return false;
+    const d = new Date(dateStr);
+    const now = new Date();
+    return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth();
+  };
+
+  const baseProducts = useMemo(() => {
+    if (mode !== 'new') return products;
+    const thisMonthProducts = products.filter((p) => isThisMonth(p.createdAt));
+    return thisMonthProducts.length > 0 ? thisMonthProducts : products;
+  }, [products, mode]);
+
+  const filteredProducts = baseProducts.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesSex = selectedSex === 'all' || product.sex === selectedSex;
+
+    // L'unisexe s'affiche systématiquement en plus du genre choisi
+    const matchesSex =
+      selectedSex === 'all' ||
+      product.sex === selectedSex ||
+      (selectedSex !== 'unisex' && product.sex === 'unisex');
+
     const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
     const matchesPrice = product.price <= maxPrice;
     const matchesSize = selectedSize === 'all' || product.sizes.includes(selectedSize);
@@ -122,17 +129,22 @@ function ShopSection() {
     }, 150);
   };
 
+  const handleResetFilters = () => {
+    setSelectedSex('all');
+    setSelectedCategory('all');
+    setSelectedSize('all');
+    setMaxPrice(25000);
+    setSearchQuery('');
+    setMode('all');
+    navigate('/shop', { replace: true });
+  };
+
   return (
     <div className="relative font-clean bg-[#f5f2eb]/20">
-      
-      {/* ======================================================== */}
-      {/* 1. HERO SECTION FULL SCREEN (Desktop & Mobile)           */}
-      {/* ======================================================== */}
-      {/* Changement ici: h-[100dvh] force la taille de l'écran mobile parfaitement */}
+
       <section className="relative h-[100dvh] w-full overflow-hidden">
-        
-        {/* LOGO GLOABAL */}
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -141,21 +153,19 @@ function ShopSection() {
           <img src={logo} alt="MyNewStyle Logo" className="h-14 md:h-16 lg:h-20 object-contain invert" />
         </motion.div>
 
-        {/* --- VUE DESKTOP (Vidéo + Textes fixes + Cartes 3D) --- */}
         <div className="hidden md:block absolute inset-0">
-          
-          <video 
-            src={videoBG} 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            className="absolute inset-0 w-full h-full object-cover" 
+
+          <video
+            src={videoBG}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
           />
-          
+
           <div className="absolute inset-0 bg-black/40 pointer-events-none"></div>
 
-          {/* TITRE ET DESCRIPTION */}
           <div className="absolute top-32 inset-x-0 flex flex-col items-center justify-start pointer-events-none z-10">
             <h1 className="text-6xl lg:text-8xl font-bold text-white tracking-tight mb-6 drop-shadow-lg">
               {t('shop_title')}
@@ -165,24 +175,20 @@ function ShopSection() {
             </p>
           </div>
 
- {/* ZONES DE HOVER DÉLIMITÉES EN BAS */}
- <div className="absolute bottom-4 inset-x-0 w-full px-8 lg:px-12 z-20 flex justify-between gap-8 lg:gap-12">
-            
-            {/* GAUCHE : FEMME */}
-            <div 
+          <div className="absolute bottom-4 inset-x-0 w-full px-8 lg:px-12 z-20 flex justify-between gap-8 lg:gap-12">
+
+            <div
               onClick={() => handleCategorySelect('women')}
               className="group w-1/2 h-[260px] lg:h-[300px] [perspective:1500px] cursor-pointer"
             >
               <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                
-                {/* Face Avant */}
+
                 <div className="absolute inset-0 flex items-center justify-center [backface-visibility:hidden] border-2 lg:border-[3px] border-white/80 hover:border-white rounded-2xl bg-white/5 backdrop-blur-[2px] transition-all duration-300">
                   <div className="text-white px-8 py-3 text-6xl lg:text-7xl font-bold uppercase">
                     {t('card_women_front')}
                   </div>
                 </div>
-                
-                {/* Face Arrière */}
+
                 <div className="absolute inset-0 bg-white/95 backdrop-blur-md flex flex-col items-center justify-center text-center [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl shadow-2xl px-6 lg:px-12 border border-gray-200">
                   <h4 className="text-[#1b2a4a] text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
                     {t('card_women_back_title')}
@@ -190,7 +196,7 @@ function ShopSection() {
                   <p className="text-gray-600 text-xs lg:text-sm mb-6 max-w-md">
                     {t('card_women_back_desc')}
                   </p>
-                  <motion.button 
+                  <motion.button
                     className="border-2 border-[#1b2a4a] text-[#1b2a4a] bg-transparent px-8 py-3 text-xs lg:text-sm tracking-[0.2em] uppercase font-bold hover:bg-[#1b2a4a] hover:text-white transition-colors rounded-none font-clean"
                   >
                     {t('btn_see_more_3d')}
@@ -199,21 +205,18 @@ function ShopSection() {
               </div>
             </div>
 
-            {/* DROITE : HOMME */}
-            <div 
+            <div
               onClick={() => handleCategorySelect('men')}
               className="group w-1/2 h-[260px] lg:h-[300px] [perspective:1500px] cursor-pointer"
             >
               <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                
-                {/* Face Avant */}
+
                 <div className="absolute inset-0 flex items-center justify-center [backface-visibility:hidden] border-2 lg:border-[3px] border-white/80 hover:border-white rounded-2xl bg-white/5 backdrop-blur-[2px] transition-all duration-300">
                   <div className="text-white px-8 py-3 text-6xl lg:text-7xl font-bold uppercase">
                     {t('card_men_front')}
                   </div>
                 </div>
-                
-                {/* Face Arrière */}
+
                 <div className="absolute inset-0 bg-[#1b2a4a]/95 backdrop-blur-md flex flex-col items-center justify-center text-center [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl shadow-2xl px-6 lg:px-12 border border-white/20">
                   <h4 className="text-white text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
                     {t('card_men_back_title')}
@@ -221,7 +224,7 @@ function ShopSection() {
                   <p className="text-white/80 text-xs lg:text-sm mb-6 max-w-md">
                     {t('card_men_back_desc')}
                   </p>
-                  <motion.button 
+                  <motion.button
                     className="border-2 border-white text-white bg-transparent px-8 py-3 text-xs lg:text-sm tracking-[0.2em] uppercase font-bold hover:bg-white hover:text-black transition-colors rounded-none font-clean"
                   >
                     {t('btn_see_more_3d')}
@@ -233,9 +236,8 @@ function ShopSection() {
           </div>
         </div>
 
-        {/* --- VUE MOBILE --- */}
         <div className="md:hidden absolute inset-0 z-20">
-          
+
           <AnimatePresence mode="wait">
             <motion.div
               key={mobileBgIndex}
@@ -249,9 +251,9 @@ function ShopSection() {
           </AnimatePresence>
 
           <div className="absolute inset-0 bg-black/50"></div>
-          
+
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-10">
-            <motion.h2 
+            <motion.h2
               key={`title-${mobileBgIndex}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -271,7 +273,7 @@ function ShopSection() {
               {t('mobile_desc')}
             </motion.p>
 
-            <motion.button 
+            <motion.button
               key={`btn-${mobileBgIndex}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -287,33 +289,28 @@ function ShopSection() {
             <div className={`w-3 h-3 rounded-full transition-colors duration-500 ${mobileBgIndex === 0 ? 'bg-white' : 'bg-white/40'}`}></div>
             <div className={`w-3 h-3 rounded-full transition-colors duration-500 ${mobileBgIndex === 1 ? 'bg-white' : 'bg-white/40'}`}></div>
           </div>
-          
+
         </div>
       </section>
 
-      {/* ======================================================== */}
-      {/* 2. SECTION BOUTIQUE & FILTRES (Cible du défilement)      */}
-      {/* ======================================================== */}
       <section ref={shopGridRef} className="max-w-7xl mx-auto pt-16 pb-24 px-6 md:px-12 lg:px-20 scroll-mt-0">
-        
-        {/* TITRE PLACÉ ICI : Au-dessus des cartes d'articles et des filtres */}
-        <motion.div 
+
+        <motion.div
+          key={pageTitleKey}
           variants={fadeUp(0)}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          animate="visible"
           className='flex flex-col items-center justify-center mb-12 text-center'
         >
           <h2 className="text-4xl md:text-5xl rtl:text-4xl rtl:md:text-5xl text-[#161f33] font-clean tracking-tighter font-bold">
-            {t('sec_category_title')}
+            {t(pageTitleKey)}
           </h2>
           <div className="w-16 h-1 bg-[#1b2a4a] mt-4 rounded-full"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          
-          {/* Panneau de Filtrage Latéral */}
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -321,19 +318,18 @@ function ShopSection() {
           >
             <div className="flex justify-between items-center border-b border-gray-100 pb-4">
               <h2 className="font-bold text-lg text-[#1b2a4a]">{t('filter_adv')}</h2>
-              <button 
-                onClick={() => { setSelectedSex('all'); setSelectedCategory('all'); setSelectedSize('all'); setMaxPrice(25000); setSearchQuery(''); }}
+              <button
+                onClick={handleResetFilters}
                 className="text-xs text-rose-500 font-semibold hover:underline"
               >
                 {t('filter_reset')}
               </button>
             </div>
 
-            {/* Recherche */}
             <div>
               <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">{t('filter_search')}</label>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 placeholder={t('filter_search_placeholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -341,7 +337,6 @@ function ShopSection() {
               />
             </div>
 
-            {/* Filtre par Sexe */}
             <div>
               <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">{t('filter_gender')}</label>
               <div className="grid grid-cols-2 gap-2">
@@ -356,34 +351,35 @@ function ShopSection() {
                   </button>
                 ))}
               </div>
+              {(selectedSex === 'men' || selectedSex === 'women') && (
+                <p className="text-[10px] text-gray-400 mt-2 italic">{t('filter_gender_unisex_note')}</p>
+              )}
             </div>
 
-            {/* Filtre par Catégorie */}
             <div>
               <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">{t('filter_category')}</label>
-              <select 
+              <select
                 value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
+                onChange={(e) => { setSelectedCategory(e.target.value); setMode('all'); }}
                 className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#1b2a4a] transition-all cursor-pointer"
               >
                 <option value="all">{t('filter_cat_all')}</option>
                 <option value="hoodies">Hoodies</option>
-                <option value="jackets">Jackets</option>
+                <option value="sweats">Sweats</option>
                 <option value="tshirts">T-Shirts</option>
                 <option value="pants">Pantalons</option>
               </select>
             </div>
 
-            {/* Filtre par Prix Max */}
             <div>
               <div className="flex justify-between text-xs font-bold text-gray-500 mb-2">
                 <span>{t('filter_price_max')}</span>
                 <span className="text-[#1b2a4a]">{maxPrice} DA</span>
               </div>
-              <input 
-                type="range" 
-                min="2000" 
-                max="25000" 
+              <input
+                type="range"
+                min="2000"
+                max="25000"
                 step="500"
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
@@ -391,7 +387,6 @@ function ShopSection() {
               />
             </div>
 
-            {/* Filtre par Taille */}
             <div>
               <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">{t('filter_size')}</label>
               <div className="flex flex-wrap gap-2">
@@ -409,10 +404,17 @@ function ShopSection() {
             </div>
           </motion.div>
 
-          {/* Grille des Produits */}
           <div className="lg:col-span-3">
-            {filteredProducts.length > 0 ? (
-              <motion.div 
+            {loading ? (
+              <div className="bg-white rounded-3xl p-12 text-center border border-gray-100 shadow-sm">
+                <p className="text-gray-500 text-base font-semibold">Chargement des produits...</p>
+              </div>
+            ) : error ? (
+              <div className="bg-white rounded-3xl p-12 text-center border border-rose-100 shadow-sm">
+                <p className="text-rose-500 text-base font-semibold">{error}</p>
+              </div>
+            ) : filteredProducts.length > 0 ? (
+              <motion.div
                 layout
                 className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6"
               >
@@ -423,7 +425,7 @@ function ShopSection() {
                 </AnimatePresence>
               </motion.div>
             ) : (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="bg-white rounded-3xl p-12 text-center border border-gray-100 shadow-sm"

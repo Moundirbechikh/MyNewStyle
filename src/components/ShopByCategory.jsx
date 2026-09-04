@@ -1,32 +1,35 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import shirt from '../assets/T-shirt.png';
 import hoodie from '../assets/Hoodie.png';
 import pants from '../assets/Pantalon.png';
 
 function ShopByCategory() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   // Liste des catégories avec des visuels minimalistes et épurés
+  // categoryValue correspond exactement à la valeur "category" utilisée côté backend
   const categories = [
     {
       id: 1,
       titleKey: "cat_tshirts",
       image: shirt,
-      link: "/category/tshirts"
+      categoryValue: "tshirts"
     },
     {
       id: 2,
       titleKey: "cat_hoodies",
       image: hoodie,
-      link: "/category/hoodies"
+      categoryValue: "hoodies"
     },
     {
       id: 3,
       titleKey: "cat_pants",
       image: pants,
-      link: "/category/pants"
+      categoryValue: "pants"
     }
   ];
 
@@ -39,6 +42,11 @@ function ShopByCategory() {
       transition: { duration: 0.6, delay: delay, ease: "easeOut" } 
     }
   });
+
+  // Navigue vers /shop avec la catégorie choisie en query param
+  const handleCategoryClick = (categoryValue) => {
+    navigate(`/shop?category=${categoryValue}`);
+  };
 
   return (
     // Fond beige chaud identique au thème du Hero
@@ -66,9 +74,9 @@ function ShopByCategory() {
             </p>
           </motion.div>
           
-          {/* Bouton "View All" : Apparaît en tout dernier (délai 0.8s) */}
-          <motion.a 
-            href="/categories" 
+          {/* Bouton "View All" : Apparaît en tout dernier (délai 0.8s), va vers le shop complet sans filtre */}
+          <motion.button 
+            onClick={() => navigate('/shop')}
             variants={fadeUp(0.8)}
             className="group inline-flex items-center gap-2 text-sm rtl:text-base font-semibold text-[#1b2a4a] hover:opacity-75 transition-all font-clean tracking-wider uppercase"
           >
@@ -87,7 +95,7 @@ function ShopByCategory() {
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
-          </motion.a>
+          </motion.button>
         </div>
 
         {/* Grille des cartes stylisées à l'identique de HeroCard */}
@@ -97,7 +105,8 @@ function ShopByCategory() {
               key={cat.id} 
               // Calcul dynamique du délai : Carte 1 = 0.2s, Carte 2 = 0.4s, Carte 3 = 0.6s
               variants={fadeUp(0.2 + (index * 0.2))} 
-              className="group bg-white/95 backdrop-blur-md p-5 flex flex-col rounded-tl-[3rem] rtl:rounded-tl-none rtl:rounded-tr-[3rem] rounded-br-[1.5rem] rtl:rounded-br-none rtl:rounded-bl-[1.5rem] shadow-xl hover:shadow-2xl border-t border-l rtl:border-l-0 rtl:border-r border-white/60 transition-all duration-500 pointer-events-auto"
+              onClick={() => handleCategoryClick(cat.categoryValue)}
+              className="group bg-white/95 backdrop-blur-md p-5 flex flex-col rounded-tl-[3rem] rtl:rounded-tl-none rtl:rounded-tr-[3rem] rounded-br-[1.5rem] rtl:rounded-br-none rtl:rounded-bl-[1.5rem] shadow-xl hover:shadow-2xl border-t border-l rtl:border-l-0 rtl:border-r border-white/60 transition-all duration-500 pointer-events-auto cursor-pointer"
             >
               {/* Zone Image : identique au conteneur de HeroCard */}
               <div className="h-[350px] w-full bg-gray-100 rounded-tl-[2rem] rtl:rounded-tl-none rtl:rounded-tr-[2rem] rounded-br-[1rem] rtl:rounded-br-none rtl:rounded-bl-[1rem] overflow-hidden relative">
@@ -114,8 +123,8 @@ function ShopByCategory() {
                   {t(cat.titleKey)}
                 </h3>
 
-                <a 
-                  href={cat.link}
+                <button 
+                  onClick={(e) => { e.stopPropagation(); handleCategoryClick(cat.categoryValue); }}
                   className="w-full py-3.5 border border-[#1b2a4a] text-[#1b2a4a] text-xs rtl:text-sm font-bold uppercase tracking-widest rounded-full hover:bg-[#1b2a4a] hover:text-white transition-all duration-300 font-clean flex items-center justify-center gap-2 whitespace-nowrap shadow-sm hover:shadow-md"
                 >
                   {t('btn_cat_explore')}
@@ -133,7 +142,7 @@ function ShopByCategory() {
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>
                   </svg>
-                </a>
+                </button>
               </div>
             </motion.div>
           ))}

@@ -12,13 +12,13 @@ const resources = {
       "nav_categories": "Categories",
       "nav_about": "About",
       "nav_contact": "Contact",
-      
+
       // Hero
       "hero_title": "Wear Your Confidence.",
       "hero_desc": "Discover premium t-shirts, hoodies, and pants designed for everyday comfort and timeless style.",
       "btn_shop": "Shop Now",
       "btn_explore": "Explore Collection",
-      
+
       // HeroCard (Best Sellers)
       "bestseller_1_name": "Premium Blank Tee",
       "bestseller_1_cat": "Men's T-Shirt",
@@ -27,21 +27,23 @@ const resources = {
       "bestseller_3_name": "Tailored Cargo Pants",
       "bestseller_3_cat": "Men's Pants",
       "btn_see_more": "See more",
+      "badge_bestseller": "Bestseller",
+      "badge_promo": "Sale",
 
-      // Shop By Category Section (Mis à jour)
+      // Shop By Category Section
       "sec_category_title": "Our Entire Collection",
       "sec_category_desc": "Essentials for every wardrobe",
       "btn_view_all": "View all",
       "cat_tshirts": "T-Shirts",
       "cat_hoodies": "Hoodies",
       "cat_pants": "Pants",
+      "cat_sweats": "Sweats",
       "btn_cat_explore": "Explore",
 
       // Why Us Section
       "sec_why_badge": "THE MYNEWSTYLE EXPERIENCE",
       "sec_why_title": "Why Order With Us?",
       "sec_why_desc": "We combine premium craftsmanship, timeless cuts, and seamless delivery to offer you unmatched confidence.",
-      
       "why_1_title": "Premium Fabrics",
       "why_1_desc": "100% heavyweight breathable cotton and high-grade finishes built to withstand daily wear and washing.",
       "why_2_title": "Perfect Tailored Fit",
@@ -63,12 +65,11 @@ const resources = {
       "rev_3_role": "Verified Buyer",
       "rev_3_text": "Minimalist perfection. The signature hoodie is the most comfortable piece of clothing I own.",
 
-      // 3D Card & Buttons (Textes originaux + Nouveaux ajouts)
+      // 3D Card & Buttons
       "card_3d_front_text": "Pure elegance, tailored to elevate your everyday life.",
       "card_3d_back_title": "Our Collection",
       "card_3d_back_text": "Discover numerous exclusive items and explore our latest online catalog.",
       "btn_see_more_3d": "See More",
-      
       "card_women_front": "Women",
       "card_women_back_title": "Women's Collection",
       "card_women_back_desc": "Discover our exclusive selection of oversized hoodies, premium t-shirts, and trendy pants, available in a wide range of colors.",
@@ -87,8 +88,8 @@ const resources = {
       "footer_terms": "Terms of Service",
       "footer_privacy": "Privacy Policy",
       "footer_rights": "© 2026 MyNewStyle. All rights reserved.",
-      
-      // --- Shop Section & Filtres ---
+
+      // Shop Section & Filtres
       "shop_title": "Explore Our Collection",
       "shop_desc": "Find the perfect pieces with our precision filtering system.",
       "filter_adv": "Advanced Filters",
@@ -107,11 +108,167 @@ const resources = {
       "filter_size_all": "All",
       "shop_empty": "No items match your search criteria.",
 
-      // --- Product Card ---
+      // Product Card
       "prod_stock": "Stock",
       "prod_out_of_stock": "Out of stock",
       "prod_add_cart": "Add to cart",
-      "prod_unavailable": "Unavailable"
+      "prod_unavailable": "Unavailable",
+      "prod_added": "Added!",
+      "prod_adding": "Adding...",
+
+      // Titres dynamiques ShopSection
+      "shop_title_new": "New Arrivals",
+      "shop_title_bestseller": "Best Sellers",
+      "shop_title_promo": "Our Promotions",
+      "shop_title_cat_tshirts": "Our T-Shirts",
+      "shop_title_cat_hoodies": "Our Hoodies",
+      "shop_title_cat_pants": "Our Pants",
+      "shop_title_cat_sweats": "Our Sweatshirts",
+
+      // Onglets HeroCard
+      "hero_tab_new": "New",
+      "hero_tab_bestseller": "Best Sellers",
+      "hero_tab_promo": "Promotions",
+      "new_1_name": "Essential Crewneck Sweat",
+      "new_1_cat": "New / Unisex",
+      "new_2_name": "Relaxed Fit Cargo Pants",
+      "new_2_cat": "New / Men",
+      "new_3_name": "Soft Touch Tee",
+      "new_3_cat": "New / Women",
+      "promo_1_name": "Oversized Premium Hoodie",
+      "promo_1_cat": "Men's Hoodie",
+      "promo_2_name": "Classic Cotton T-Shirt",
+      "promo_2_cat": "Women's T-Shirt",
+      "promo_3_name": "Urban Cargo Pants",
+      "promo_3_cat": "Unisex Pants",
+
+      // Auth (Login / Register)
+      "login_title": "Welcome Back",
+      "login_desc": "Log in to access your account",
+      "login_submit": "Log In",
+      "login_loading": "Logging in...",
+      "login_no_account": "Don't have an account?",
+      "login_register_link": "Sign up",
+      "register_title": "Create Account",
+      "register_desc": "Join us in a few seconds",
+      "register_submit": "Sign Up",
+      "register_loading": "Creating account...",
+      "register_have_account": "Already have an account?",
+      "register_login_link": "Log in",
+      "form_name": "Full Name",
+      "form_email": "Email",
+      "form_password": "Password",
+      "form_phone": "Phone",
+      "form_address": "Address",
+      "form_city": "City",
+      "form_notes": "Notes (optional)",
+      "login_visual_badge": "Welcome Back",
+      "login_visual_title": "Your Style, Your Confidence.",
+      "login_visual_desc": "Log in to track your orders and manage your wardrobe essentials.",
+      "register_visual_badge": "Join Us",
+      "register_visual_title": "Elevate Your Everyday Wardrobe.",
+      "register_visual_desc": "Create your account to start shopping premium essentials.",
+
+      // Navbar (compte)
+      "navbar_connected_as": "Connected as",
+      "navbar_my_profile": "My Profile",
+      "navbar_logout": "Log Out",
+      "navbar_login": "Log In",
+
+      // Recherche
+      "search_placeholder": "Search for an item, a category...",
+      "search_hint": "Start typing to search...",
+      "search_loading": "Searching...",
+      "search_no_results": "No results found.",
+      "search_categories_label": "Categories",
+      "search_products_label": "Products",
+      "search_see_all": "See all results for",
+
+      // Panier
+      "cart_title": "My Cart",
+      "cart_subtitle": "Review your items before placing your order.",
+      "cart_empty_title": "Your cart is empty",
+      "cart_empty_desc": "Add some items to get started.",
+      "cart_go_shop": "Go to shop",
+      "cart_size": "Size",
+      "cart_summary": "Order Summary",
+      "cart_subtotal": "Subtotal",
+      "cart_shipping": "Shipping",
+      "cart_shipping_note": "Calculated on delivery",
+      "cart_total": "Total",
+      "cart_checkout": "Checkout",
+
+      // Commande
+      "order_placing": "Placing order...",
+      "order_confirm": "Confirm Order",
+      "order_no_payment_note": "No online payment — pay on delivery",
+      "order_success_title": "Order Confirmed!",
+      "order_success_desc": "We'll contact you shortly to confirm delivery.",
+      "order_number": "Order number",
+      "order_continue_shopping": "Continue Shopping",
+      "order_status_en_attente": "Pending",
+      "order_status_confirmee": "Confirmed",
+      "order_status_expediee": "Shipped",
+      "order_status_livree": "Delivered",
+      "order_status_annulee": "Cancelled",
+
+      // Favoris
+      "favorites_title": "My Favorites",
+      "favorites_subtitle": "All the pieces you've saved for later.",
+      "favorites_empty": "No favorites yet.",
+      "favorites_empty_desc": "Tap the heart on any item to save it here.",
+
+      // Profil
+      "profile_title": "My Account",
+      "profile_subtitle": "Manage your personal information and orders.",
+      "profile_logout": "Log Out",
+      "profile_orders_title": "Order History",
+      "profile_orders_loading": "Loading your orders...",
+      "profile_orders_empty_title": "No orders yet",
+      "profile_orders_empty_desc": "Your recent purchases will appear here once you place your first order.",
+      "profile_orders_cta": "Discover the collection",
+      "profile_order_items": "item(s)",
+      "verify_title": "Verify Your Account",
+"verify_desc": "Enter the 6-digit code we sent to",
+"verify_submit": "Verify Account",
+"verify_loading": "Verifying...",
+"verify_incomplete_code": "Please enter all 6 digits",
+"verify_no_code": "Didn't receive the code?",
+"verify_resend_link": "Resend code",
+"verify_resending": "Sending...",
+"verify_code_resent": "A new code has been sent to your email",
+"verify_no_email": "No email found. Please register first.",
+"verify_visual_badge": "Almost There",
+"verify_visual_title": "One Last Step.",
+"verify_visual_desc": "Confirm your email to unlock your MyNewStyle account.",
+"rating_section_title": "Rate Your Shopping Experience",
+"rating_title": "Leave a Review", "rating_edit_title": "Update Your Review",
+"rating_desc": "Share your experience with other customers",
+"rating_placeholder": "Tell us about your experience...",
+"rating_submit": "Submit Review", "rating_update_submit": "Update Review",
+"rating_submitting": "Submitting...", "rating_success": "Thank you for your feedback!",
+"rating_error_no_stars": "Please select a star rating",
+"rating_error_no_comment": "Please write a comment",
+"rating_login_title": "Want to leave a review?", "rating_login_desc": "Log in to share your experience with us.",
+"rating_community_title": "Recent Customer Reviews",
+"rating_give_btn": "Give Your Review",
+"rating_give_btn": "Give My Review",
+"rating_edit_btn": "Edit",
+"rating_delete_btn": "Delete",
+"rating_delete_confirm": "Delete your review? This cannot be undone.",
+"rating_my_review_title": "My Review",
+"rating_anonymous": "MyNewStyle Customer",
+"rating_verified_buyer": "Verified Buyer",
+"rating_empty_title": "No reviews yet",
+"rating_empty_desc": "Be the first to share your experience!",
+"hero_empty_title": "Nothing here yet",
+"hero_empty_desc": "Check back soon for new arrivals in this category.",
+"nav_why_us": "Pourquoi Nous",
+"filter_gender_unisex_note": "Les articles unisexes s'affichent aussi",
+"search_gender_label": "Genre",
+
+// FR
+
     }
   },
   fr: {
@@ -123,13 +280,13 @@ const resources = {
       "nav_categories": "Catégories",
       "nav_about": "À Propos",
       "nav_contact": "Contact",
-      
+
       // Hero
       "hero_title": "Portez Votre Confiance.",
       "hero_desc": "Découvrez des t-shirts, sweats à capuche et pantalons haut de gamme conçus pour le confort quotidien et un style intemporel.",
       "btn_shop": "Acheter",
       "btn_explore": "Explorer la Collection",
-      
+
       // HeroCard (Best Sellers)
       "bestseller_1_name": "T-shirt Vierge Premium",
       "bestseller_1_cat": "T-shirt Homme",
@@ -138,21 +295,23 @@ const resources = {
       "bestseller_3_name": "Pantalon Cargo Ajusté",
       "bestseller_3_cat": "Pantalon Homme",
       "btn_see_more": "Voir plus",
+      "badge_bestseller": "Best Seller",
+      "badge_promo": "Promo",
 
-      // Shop By Category Section (Mis à jour)
+      // Shop By Category Section
       "sec_category_title": "L'intégralité de nos articles",
       "sec_category_desc": "Les essentiels pour chaque garde-robe",
       "btn_view_all": "Voir tout",
       "cat_tshirts": "T-Shirts",
       "cat_hoodies": "Sweats à capuche",
       "cat_pants": "Pantalons",
+      "cat_sweats": "Sweats",
       "btn_cat_explore": "Explorer",
 
       // Why Us Section
       "sec_why_badge": "L'EXPÉRIENCE MYNEWSTYLE",
       "sec_why_title": "Pourquoi Commander Chez Nous ?",
       "sec_why_desc": "Nous associons finitions de qualité, coupes intemporelles et livraison rapide pour vous garantir une satisfaction totale.",
-      
       "why_1_title": "Tissus Haut de Gamme",
       "why_1_desc": "100% coton épais et respirant, conçu avec des finitions durables pour résister au temps et aux lavages.",
       "why_2_title": "Coupe & Confort Parfaits",
@@ -174,12 +333,11 @@ const resources = {
       "rev_3_role": "Acheteur Vérifié",
       "rev_3_text": "La perfection minimaliste. Le hoodie signature est la pièce la plus confortable que je possède.",
 
-      // 3D Card & Buttons (Textes originaux + Nouveaux ajouts)
+      // 3D Card & Buttons
       "card_3d_front_text": "L'élégance à l'état pur, taillée pour sublimer votre quotidien.",
       "card_3d_back_title": "Notre Collection",
       "card_3d_back_text": "Découvrez de nombreux articles exclusifs et explorez notre tout dernier catalogue en ligne.",
       "btn_see_more_3d": "Voir Plus",
-      
       "card_women_front": "Femme",
       "card_women_back_title": "Collection Femme",
       "card_women_back_desc": "Découvrez notre sélection exclusive de hoodies oversize, t-shirts premium et pantalons tendance, disponibles dans une large gamme de couleurs.",
@@ -198,8 +356,8 @@ const resources = {
       "footer_terms": "Conditions d'utilisation",
       "footer_privacy": "Politique de confidentialité",
       "footer_rights": "© 2026 MyNewStyle. Tous droits réservés.",
-      
-      // --- Shop Section & Filtres ---
+
+      // Shop Section & Filtres
       "shop_title": "Explorer notre Collection",
       "shop_desc": "Trouvez les pièces idéales grâce à notre système de filtrage de précision.",
       "filter_adv": "Filtres Avancés",
@@ -218,11 +376,167 @@ const resources = {
       "filter_size_all": "Toutes",
       "shop_empty": "Aucun article ne correspond à vos critères de recherche.",
 
-      // --- Product Card ---
+      // Product Card
       "prod_stock": "Stock",
       "prod_out_of_stock": "Rupture",
       "prod_add_cart": "Ajouter au panier",
-      "prod_unavailable": "Indisponible"
+      "prod_unavailable": "Indisponible",
+      "prod_added": "Ajouté !",
+      "prod_adding": "Ajout...",
+
+      // Titres dynamiques ShopSection
+      "shop_title_new": "Nouveautés",
+      "shop_title_bestseller": "Meilleures Ventes",
+      "shop_title_promo": "Nos Promotions",
+      "shop_title_cat_tshirts": "Nos T-Shirts",
+      "shop_title_cat_hoodies": "Nos Sweats à Capuche",
+      "shop_title_cat_pants": "Nos Pantalons",
+      "shop_title_cat_sweats": "Nos Sweats",
+
+      // Onglets HeroCard
+      "hero_tab_new": "Nouveautés",
+      "hero_tab_bestseller": "Best Sellers",
+      "hero_tab_promo": "Promotions",
+      "new_1_name": "Sweat Col Rond Essentiel",
+      "new_1_cat": "Nouveauté / Unisexe",
+      "new_2_name": "Pantalon Cargo Ample",
+      "new_2_cat": "Nouveauté / Homme",
+      "new_3_name": "T-Shirt Douceur Absolue",
+      "new_3_cat": "Nouveauté / Femme",
+      "promo_1_name": "Hoodie Premium Oversize",
+      "promo_1_cat": "Sweat Homme",
+      "promo_2_name": "T-Shirt Coton Classique",
+      "promo_2_cat": "T-Shirt Femme",
+      "promo_3_name": "Pantalon Cargo Urbain",
+      "promo_3_cat": "Pantalon Unisexe",
+
+      // Auth (Login / Register)
+      "login_title": "Bon Retour",
+      "login_desc": "Connectez-vous pour accéder à votre compte",
+      "login_submit": "Se Connecter",
+      "login_loading": "Connexion...",
+      "login_no_account": "Pas encore de compte ?",
+      "login_register_link": "S'inscrire",
+      "register_title": "Créer un Compte",
+      "register_desc": "Rejoignez-nous en quelques secondes",
+      "register_submit": "S'inscrire",
+      "register_loading": "Création du compte...",
+      "register_have_account": "Vous avez déjà un compte ?",
+      "register_login_link": "Se connecter",
+      "form_name": "Nom Complet",
+      "form_email": "Email",
+      "form_password": "Mot de Passe",
+      "form_phone": "Téléphone",
+      "form_address": "Adresse",
+      "form_city": "Ville",
+      "form_notes": "Notes (optionnel)",
+      "login_visual_badge": "Bon Retour",
+      "login_visual_title": "Votre Style, Votre Confiance.",
+      "login_visual_desc": "Connectez-vous pour suivre vos commandes et gérer vos essentiels.",
+      "register_visual_badge": "Rejoignez-Nous",
+      "register_visual_title": "Élevez Votre Garde-Robe Quotidienne.",
+      "register_visual_desc": "Créez votre compte pour commencer à acheter nos essentiels premium.",
+
+      // Navbar (compte)
+      "navbar_connected_as": "Connecté en tant que",
+      "navbar_my_profile": "Mon Profil",
+      "navbar_logout": "Se Déconnecter",
+      "navbar_login": "Se Connecter",
+
+      // Recherche
+      "search_placeholder": "Rechercher un article, une catégorie...",
+      "search_hint": "Commencez à taper pour rechercher...",
+      "search_loading": "Recherche en cours...",
+      "search_no_results": "Aucun résultat trouvé.",
+      "search_categories_label": "Catégories",
+      "search_products_label": "Produits",
+      "search_see_all": "Voir tous les résultats pour",
+
+      // Panier
+      "cart_title": "Mon Panier",
+      "cart_subtitle": "Vérifiez vos articles avant de valider votre commande.",
+      "cart_empty_title": "Votre panier est vide",
+      "cart_empty_desc": "Ajoutez des articles pour commencer.",
+      "cart_go_shop": "Aller à la boutique",
+      "cart_size": "Taille",
+      "cart_summary": "Récapitulatif",
+      "cart_subtotal": "Sous-total",
+      "cart_shipping": "Livraison",
+      "cart_shipping_note": "Calculée à la livraison",
+      "cart_total": "Total",
+      "cart_checkout": "Passer la commande",
+
+      // Commande
+      "order_placing": "Commande en cours...",
+      "order_confirm": "Confirmer la Commande",
+      "order_no_payment_note": "Aucun paiement en ligne — paiement à la livraison",
+      "order_success_title": "Commande Confirmée !",
+      "order_success_desc": "Nous vous contacterons bientôt pour confirmer la livraison.",
+      "order_number": "Numéro de commande",
+      "order_continue_shopping": "Continuer mes Achats",
+      "order_status_en_attente": "En attente",
+      "order_status_confirmee": "Confirmée",
+      "order_status_expediee": "Expédiée",
+      "order_status_livree": "Livrée",
+      "order_status_annulee": "Annulée",
+
+      // Favoris
+      "favorites_title": "Mes Favoris",
+      "favorites_subtitle": "Retrouvez tous les articles que vous avez aimés.",
+      "favorites_empty": "Aucun favori pour le moment.",
+      "favorites_empty_desc": "Cliquez sur le cœur d'un article pour le sauvegarder ici.",
+
+      // Profil
+      "profile_title": "Mon Compte",
+      "profile_subtitle": "Gérez vos informations personnelles et vos commandes.",
+      "profile_logout": "Se Déconnecter",
+      "profile_orders_title": "Historique des commandes",
+      "profile_orders_loading": "Chargement de vos commandes...",
+      "profile_orders_empty_title": "Aucune commande pour le moment",
+      "profile_orders_empty_desc": "Vos achats récents apparaîtront ici une fois votre première commande passée.",
+      "profile_orders_cta": "Découvrir la collection",
+      "profile_order_items": "article(s)",
+      "verify_title": "Vérifiez votre compte",
+"verify_desc": "Entrez le code à 6 chiffres envoyé à",
+"verify_submit": "Vérifier le Compte",
+"verify_loading": "Vérification...",
+"verify_incomplete_code": "Merci de saisir les 6 chiffres",
+"verify_no_code": "Vous n'avez pas reçu le code ?",
+"verify_resend_link": "Renvoyer le code",
+"verify_resending": "Envoi...",
+"verify_code_resent": "Un nouveau code a été envoyé à votre email",
+"verify_no_email": "Aucun email trouvé. Merci de vous inscrire d'abord.",
+"verify_visual_badge": "Presque Fini",
+"verify_visual_title": "Une Dernière Étape.",
+"verify_visual_desc": "Confirmez votre email pour débloquer votre compte MyNewStyle.",
+"rating_section_title": "Notez Votre Expérience d'Achat",
+"rating_title": "Laisser un Avis", "rating_edit_title": "Modifier Votre Avis",
+"rating_desc": "Partagez votre expérience avec les autres clients",
+"rating_placeholder": "Racontez-nous votre expérience...",
+"rating_submit": "Envoyer l'Avis", "rating_update_submit": "Mettre à Jour",
+"rating_submitting": "Envoi...", "rating_success": "Merci pour votre retour !",
+"rating_error_no_stars": "Merci de sélectionner une note",
+"rating_error_no_comment": "Merci d'écrire un commentaire",
+"rating_login_title": "Envie de laisser un avis ?", "rating_login_desc": "Connectez-vous pour partager votre expérience avec nous.",
+"rating_community_title": "Avis Récents de Nos Clients",
+"rating_give_btn": "Donnez Votre Avis",
+"rating_give_btn": "Donner Mon Avis",
+"rating_edit_btn": "Modifier",
+"rating_delete_btn": "Supprimer",
+"rating_delete_confirm": "Supprimer votre avis ? Cette action est irréversible.",
+"rating_my_review_title": "Mon Avis",
+"rating_anonymous": "Client MyNewStyle",
+"rating_verified_buyer": "Acheteur Vérifié",
+"rating_empty_title": "Aucun avis pour le moment",
+"rating_empty_desc": "Soyez le premier à partager votre expérience !",
+"hero_empty_title": "Rien ici pour l'instant",
+"hero_empty_desc": "Reviens bientôt pour découvrir les nouveautés de cette catégorie.",
+"nav_why_us": "Why Us",
+"filter_gender_unisex_note": "Unisex items are shown too",
+"search_gender_label": "Gender",
+
+
+
     }
   },
   ar: {
@@ -234,13 +548,13 @@ const resources = {
       "nav_categories": "الأقسام",
       "nav_about": "من نحن",
       "nav_contact": "اتصل بنا",
-      
+
       // Hero
       "hero_title": "ارتدِ ثقتك.",
       "hero_desc": "اكتشف قمصان، سترات وسراويل عالية الجودة مصممة للراحة اليومية والأناقة الدائمة.",
       "btn_shop": "تسوق الآن",
       "btn_explore": "اكتشف التشكيلة",
-      
+
       // HeroCard (Best Sellers)
       "bestseller_1_name": "تي شيرت سادة فاخر",
       "bestseller_1_cat": "تي شيرت رجالي",
@@ -249,21 +563,23 @@ const resources = {
       "bestseller_3_name": "سروال كارغو مفصل",
       "bestseller_3_cat": "سروال رجالي",
       "btn_see_more": "رؤية المزيد",
+      "badge_bestseller": "الأكثر مبيعاً",
+      "badge_promo": "تخفيض",
 
-      // Shop By Category Section (Mis à jour)
+      // Shop By Category Section
       "sec_category_title": "جميع منتجاتنا",
       "sec_category_desc": "أساسيات لكل خزانة ملابس",
       "btn_view_all": "عرض الكل",
       "cat_tshirts": "تي شيرتات",
       "cat_hoodies": "سترات",
       "cat_pants": "سراويل",
+      "cat_sweats": "سويشيرتات",
       "btn_cat_explore": "اكتشف",
 
       // Why Us Section
       "sec_why_badge": "تجربة MYNEWSTYLE",
       "sec_why_title": "لماذا تطلب منا؟",
       "sec_why_desc": "نحن نجمع بين الحرفية العالية، القصات الدائمة والتوصيل السلس لنقدم لك ثقة لا مثيل لها.",
-      
       "why_1_title": "أقمشة فاخرة",
       "why_1_desc": "قطن 100% ثقيل الوزن وقابل للتنفس بلمسات نهائية عالية الجودة لتحمل الاستخدام والغسيل اليومي.",
       "why_2_title": "قصة مفصلة مثالية",
@@ -285,12 +601,11 @@ const resources = {
       "rev_3_role": "مشتري معتمد",
       "rev_3_text": "الكمال البسيط. السترة المميزة هي أكثر قطعة ملابس مريحة أمتلكها.",
 
-      // 3D Card & Buttons (Textes originaux + Nouveaux ajouts)
+      // 3D Card & Buttons
       "card_3d_front_text": "أناقة خالصة، مصممة للارتقاء بحياتك اليومية.",
       "card_3d_back_title": "تشكيلتنا",
       "card_3d_back_text": "اكتشف العديد من العناصر الحصرية وتصفح أحدث كتالوج عبر الإنترنت.",
       "btn_see_more_3d": "رؤية المزيد",
-      
       "card_women_front": "نساء",
       "card_women_back_title": "تشكيلة النساء",
       "card_women_back_desc": "اكتشف تشكيلتنا الحصرية من السترات الفضفاضة، والقمصان الفاخرة، والسراويل العصرية، متوفرة بمجموعة واسعة من الألوان.",
@@ -309,8 +624,8 @@ const resources = {
       "footer_terms": "شروط الخدمة",
       "footer_privacy": "سياسة الخصوصية",
       "footer_rights": "© 2026 MyNewStyle. جميع الحقوق محفوظة.",
-      
-      // --- Shop Section & Filtres ---
+
+      // Shop Section & Filtres
       "shop_title": "اكتشف تشكيلتنا",
       "shop_desc": "ابحث عن القطع المثالية باستخدام نظام التصفية الدقيق الخاص بنا.",
       "filter_adv": "عوامل تصفية متقدمة",
@@ -329,24 +644,177 @@ const resources = {
       "filter_size_all": "الكل",
       "shop_empty": "لا توجد عناصر تطابق معايير البحث الخاصة بك.",
 
-      // --- Product Card ---
+      // Product Card
       "prod_stock": "المخزون",
       "prod_out_of_stock": "نفد المخزون",
       "prod_add_cart": "أضف إلى السلة",
-      "prod_unavailable": "غير متوفر"
+      "prod_unavailable": "غير متوفر",
+      "prod_added": "تمت الإضافة!",
+      "prod_adding": "جارٍ الإضافة...",
+
+      // Titres dynamiques ShopSection
+      "shop_title_new": "وصل حديثاً",
+      "shop_title_bestseller": "الأكثر مبيعاً",
+      "shop_title_promo": "عروضنا",
+      "shop_title_cat_tshirts": "قمصاننا",
+      "shop_title_cat_hoodies": "ستراتنا",
+      "shop_title_cat_pants": "سراويلنا",
+      "shop_title_cat_sweats": "سويشيرتاتنا",
+
+      // Onglets HeroCard
+      "hero_tab_new": "جديد",
+      "hero_tab_bestseller": "الأكثر مبيعاً",
+      "hero_tab_promo": "عروض",
+      "new_1_name": "سويت شيرت أساسي",
+      "new_1_cat": "جديد / للجنسين",
+      "new_2_name": "سروال كارغو واسع",
+      "new_2_cat": "جديد / رجالي",
+      "new_3_name": "تي شيرت ناعم",
+      "new_3_cat": "جديد / نسائي",
+      "promo_1_name": "هودي فاخر فضفاض",
+      "promo_1_cat": "سترة رجالية",
+      "promo_2_name": "تي شيرت قطني كلاسيكي",
+      "promo_2_cat": "تي شيرت نسائي",
+      "promo_3_name": "سروال كارغو حضري",
+      "promo_3_cat": "سروال للجنسين",
+
+      // Auth (Login / Register)
+      "login_title": "مرحباً بعودتك",
+      "login_desc": "سجل الدخول للوصول إلى حسابك",
+      "login_submit": "تسجيل الدخول",
+      "login_loading": "جارٍ تسجيل الدخول...",
+      "login_no_account": "ليس لديك حساب؟",
+      "login_register_link": "إنشاء حساب",
+      "register_title": "إنشاء حساب",
+      "register_desc": "انضم إلينا في ثوانٍ معدودة",
+      "register_submit": "إنشاء حساب",
+      "register_loading": "جارٍ إنشاء الحساب...",
+      "register_have_account": "لديك حساب بالفعل؟",
+      "register_login_link": "تسجيل الدخول",
+      "form_name": "الاسم الكامل",
+      "form_email": "البريد الإلكتروني",
+      "form_password": "كلمة المرور",
+      "form_phone": "الهاتف",
+      "form_address": "العنوان",
+      "form_city": "المدينة",
+      "form_notes": "ملاحظات (اختياري)",
+      "login_visual_badge": "مرحباً بعودتك",
+      "login_visual_title": "أناقتك، ثقتك.",
+      "login_visual_desc": "سجل الدخول لمتابعة طلباتك وإدارة أساسيات خزانتك.",
+      "register_visual_badge": "انضم إلينا",
+      "register_visual_title": "ارتقِ بخزانة ملابسك اليومية.",
+      "register_visual_desc": "أنشئ حسابك لتبدأ التسوق من أساسياتنا الفاخرة.",
+
+      // Navbar (compte)
+      "navbar_connected_as": "متصل باسم",
+      "navbar_my_profile": "ملفي الشخصي",
+      "navbar_logout": "تسجيل الخروج",
+      "navbar_login": "تسجيل الدخول",
+
+      // Recherche
+      "search_placeholder": "ابحث عن منتج أو قسم...",
+      "search_hint": "ابدأ الكتابة للبحث...",
+      "search_loading": "جارٍ البحث...",
+      "search_no_results": "لا توجد نتائج.",
+      "search_categories_label": "الأقسام",
+      "search_products_label": "المنتجات",
+      "search_see_all": "عرض كل النتائج لـ",
+
+      // Panier
+      "cart_title": "سلتي",
+      "cart_subtitle": "راجع منتجاتك قبل تأكيد الطلب.",
+      "cart_empty_title": "سلتك فارغة",
+      "cart_empty_desc": "أضف بعض المنتجات للبدء.",
+      "cart_go_shop": "الذهاب للمتجر",
+      "cart_size": "المقاس",
+      "cart_summary": "ملخص الطلب",
+      "cart_subtotal": "المجموع الفرعي",
+      "cart_shipping": "التوصيل",
+      "cart_shipping_note": "يُحسب عند التسليم",
+      "cart_total": "الإجمالي",
+      "cart_checkout": "إتمام الطلب",
+
+      // Commande
+      "order_placing": "جارٍ تقديم الطلب...",
+      "order_confirm": "تأكيد الطلب",
+      "order_no_payment_note": "لا يوجد دفع إلكتروني — الدفع عند الاستلام",
+      "order_success_title": "تم تأكيد الطلب!",
+      "order_success_desc": "سنتواصل معك قريباً لتأكيد التسليم.",
+      "order_number": "رقم الطلب",
+      "order_continue_shopping": "متابعة التسوق",
+      "order_status_en_attente": "قيد الانتظار",
+      "order_status_confirmee": "مؤكد",
+      "order_status_expediee": "تم الشحن",
+      "order_status_livree": "تم التسليم",
+      "order_status_annulee": "ملغى",
+
+      // Favoris
+      "favorites_title": "المفضلة",
+      "favorites_subtitle": "جميع القطع التي أعجبتك في مكان واحد.",
+      "favorites_empty": "لا توجد مفضلات بعد.",
+      "favorites_empty_desc": "اضغط على القلب في أي منتج لحفظه هنا.",
+
+      // Profil
+      "profile_title": "حسابي",
+      "profile_subtitle": "إدارة معلوماتك الشخصية وطلباتك.",
+      "profile_logout": "تسجيل الخروج",
+      "profile_orders_title": "سجل الطلبات",
+      "profile_orders_loading": "جارٍ تحميل طلباتك...",
+      "profile_orders_empty_title": "لا توجد طلبات بعد",
+      "profile_orders_empty_desc": "ستظهر مشترياتك الأخيرة هنا بعد إتمام أول طلب لك.",
+      "profile_orders_cta": "اكتشف التشكيلة",
+      "profile_order_items": "منتج (منتجات)",
+      "verify_title": "تحقق من حسابك",
+"verify_desc": "أدخل الرمز المكون من 6 أرقام المرسل إلى",
+"verify_submit": "تأكيد الحساب",
+"verify_loading": "جارٍ التحقق...",
+"verify_incomplete_code": "يرجى إدخال الأرقام الستة كاملة",
+"verify_no_code": "لم تستلم الرمز؟",
+"verify_resend_link": "إعادة إرسال الرمز",
+"verify_resending": "جارٍ الإرسال...",
+"verify_code_resent": "تم إرسال رمز جديد إلى بريدك الإلكتروني",
+"verify_no_email": "لم يتم العثور على بريد إلكتروني. يرجى التسجيل أولاً.",
+"verify_visual_badge": "على وشك الانتهاء",
+"verify_visual_title": "خطوة أخيرة.",
+"verify_visual_desc": "أكد بريدك الإلكتروني لتفعيل حسابك في MyNewStyle.",
+"rating_section_title": "قيّم تجربة تسوقك",
+"rating_title": "أضف تقييماً", "rating_edit_title": "عدّل تقييمك",
+"rating_desc": "شارك تجربتك مع باقي العملاء",
+"rating_placeholder": "أخبرنا عن تجربتك...",
+"rating_submit": "إرسال التقييم", "rating_update_submit": "تحديث التقييم",
+"rating_submitting": "جارٍ الإرسال...", "rating_success": "شكراً على ملاحظاتك!",
+"rating_error_no_stars": "يرجى اختيار عدد النجوم",
+"rating_error_no_comment": "يرجى كتابة تعليق",
+"rating_login_title": "تريد ترك تقييم؟", "rating_login_desc": "سجل الدخول لمشاركة تجربتك معنا.",
+"rating_community_title": "أحدث تقييمات العملاء",
+"rating_give_btn": "أضف تقييمك",
+"rating_give_btn": "أضف تقييمي",
+"rating_edit_btn": "تعديل",
+"rating_delete_btn": "حذف",
+"rating_delete_confirm": "حذف تقييمك؟ لا يمكن التراجع عن هذا الإجراء.",
+"rating_my_review_title": "تقييمي",
+"rating_anonymous": "عميل MyNewStyle",
+"rating_verified_buyer": "مشتري معتمد",
+"rating_empty_title": "لا توجد تقييمات بعد",
+"rating_empty_desc": "كن أول من يشارك تجربته!",
+"hero_empty_title": "لا يوجد شيء هنا بعد",
+"hero_empty_desc": "عد قريباً لاكتشاف الجديد في هذا القسم.",
+"nav_why_us": "لماذا نحن",
+"filter_gender_unisex_note": "تظهر أيضاً المنتجات للجنسين",
+"search_gender_label": "الجنس"
     }
   }
 };
 
 i18n
-  .use(LanguageDetector) 
-  .use(initReactI18next) 
+  .use(LanguageDetector)
+  .use(initReactI18next)
   .init({
     resources,
     fallbackLng: 'en',
-    debug: false, 
+    debug: false,
     interpolation: {
-      escapeValue: false, 
+      escapeValue: false,
     }
   });
 
