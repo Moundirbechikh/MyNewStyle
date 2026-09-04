@@ -50,7 +50,7 @@ function ShopSection() {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const apiUrl = import.meta.env.VITE_API_URL || 'https://mynewstyle-server.onrender.com';
         const params = new URLSearchParams();
         if (mode && mode !== 'all' && mode !== 'new') params.set('mode', mode);
 
