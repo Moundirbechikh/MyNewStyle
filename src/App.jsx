@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 import { FavoritesProvider } from "./context/FavoritesContext";
+import LoadingScreen from "./components/Loadingscreen";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import ShopByCategory from "./components/ShopByCategory";
@@ -20,10 +21,10 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRoute from "./components/AdminRoute";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/Admindashboard";
-import AdminProducts from "./pages/admin/Adminproducts";
-import AdminOrders from "./pages/admin/Adminorders";
-import AdminReviews from "./pages/admin/Adminreviews";
-import AdminGuide from "./pages/admin/Adminguide";
+import AdminProducts from "./pages/admin/AdminProducts";
+import AdminOrders from "./pages/admin/AdminOrders";
+import AdminReviews from "./pages/admin/AdminReviews";
+import AdminGuide from "./pages/admin/AdminGuide";
 
 function Home() {
   return (
@@ -53,8 +54,6 @@ function PageFade({ children }) {
 function AppShell() {
   const location = useLocation();
 
-  // Le Navbar du site public ne s'affiche pas sur les pages d'auth NI sur l'espace admin
-  // (l'espace admin a sa propre sidebar/navigation dédiée)
   const hideNavbar =
     location.pathname === '/login' ||
     location.pathname === '/register' ||
@@ -97,7 +96,6 @@ function AppShell() {
               }
             />
 
-            {/* ===== Espace Admin ===== */}
             <Route
               path="/admin"
               element={
@@ -122,15 +120,19 @@ function AppShell() {
 
 function App() {
   return (
-    <AuthProvider>
-      <CartProvider>
-        <FavoritesProvider>
-          <Router>
-            <AppShell />
-          </Router>
-        </FavoritesProvider>
-      </CartProvider>
-    </AuthProvider>
+    // LoadingScreen enveloppe TOUT : rien ne se monte (ni les contextes,
+    // ni leurs appels API) tant que le backend n'a pas confirmé être réveillé.
+    <LoadingScreen>
+      <AuthProvider>
+        <CartProvider>
+          <FavoritesProvider>
+            <Router>
+              <AppShell />
+            </Router>
+          </FavoritesProvider>
+        </CartProvider>
+      </AuthProvider>
+    </LoadingScreen>
   );
 }
 
