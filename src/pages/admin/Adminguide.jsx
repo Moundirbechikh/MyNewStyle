@@ -7,6 +7,8 @@ import {
   Plus,
   Trash2,
   AlertTriangle,
+  Wallet,
+  ArrowUpRight,
 } from 'lucide-react';
 
 function GuideRow({ children, text }) {
@@ -172,12 +174,26 @@ function AdminGuide() {
       {/* ============ TABLEAU DE BORD ============ */}
       <SectionTitle icon={LayoutDashboard}>Tableau de bord</SectionTitle>
       <div className="space-y-3">
-        <GuideRow text="Le chiffre d'affaires exclut automatiquement les commandes annulées et retournées — c'est ton vrai revenu net.">
-          <div className="bg-white rounded-2xl px-4 py-3 border border-gray-100 hover:shadow-md transition-shadow duration-300 w-full">
-            <p className="text-lg font-bold text-[#161f33]">45 000 DA</p>
-            <p className="text-[10px] text-gray-400">Chiffre d'affaires</p>
+        
+        {/* Le bloc Chiffre d'affaires mis à jour avec le design du composant StatCard */}
+        <GuideRow text="Le chiffre d'affaires exclut automatiquement les commandes annulées et retournées — c'est ton vrai revenu net. Clique dessus pour voir les statistiques détaillées.">
+          <div className="relative w-full bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-sm border border-emerald-400 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer">
+            <div className="absolute -top-6 -right-6 w-20 h-20 sm:w-24 sm:h-24 bg-[#1b2a4a]/[0.03] rounded-full"></div>
+
+            <div className="relative flex items-start justify-between mb-3 sm:mb-5">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#1b2a4a] flex items-center justify-center shadow-lg shadow-[#1b2a4a]/20 shrink-0">
+                <Wallet size={20} strokeWidth={2.2} className="text-white sm:w-[22px] sm:h-[22px]" />
+              </div>
+              <span className="text-[9px] font-bold uppercase tracking-wider text-[#1b2a4a] bg-[#1b2a4a]/5 px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-full flex items-center gap-1 shrink-0 hover:bg-[#1b2a4a]/10 transition-colors">
+                Détails <ArrowUpRight size={11} strokeWidth={2.5} />
+              </span>
+            </div>
+            
+            <p className="relative text-2xl sm:text-3xl font-black text-[#161f33] tracking-tight truncate">45 000 DA</p>
+            <p className="relative text-[10px] sm:text-xs text-gray-400 font-bold uppercase tracking-wider mt-1 sm:mt-1.5 line-clamp-2">Chiffre d'affaires</p>
           </div>
         </GuideRow>
+
         <GuideRow text="Cette section liste les produits dont au moins une taille est à 3 unités ou moins — clique sur 'Gérer' pour aller directement les réapprovisionner.">
           <span className="text-[10px] font-bold text-rose-500 uppercase flex items-center gap-1.5">
             <AlertTriangle size={13} strokeWidth={2.5} />
