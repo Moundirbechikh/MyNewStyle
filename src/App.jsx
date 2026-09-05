@@ -21,10 +21,10 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRoute from "./components/AdminRoute";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/Admindashboard";
-import AdminProducts from "./pages/admin/AdminProducts";
-import AdminOrders from "./pages/admin/AdminOrders";
-import AdminReviews from "./pages/admin/AdminReviews";
-import AdminGuide from "./pages/admin/AdminGuide";
+import AdminProducts from "./pages/admin/Adminproducts";
+import AdminOrders from "./pages/admin/Adminorders";
+import AdminReviews from "./pages/admin/Adminreviews";
+import AdminGuide from "./pages/admin/Adminguide";
 
 function Home() {
   return (
