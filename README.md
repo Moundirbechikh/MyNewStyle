@@ -2,7 +2,7 @@
   <img src="./public/Readme.jpg" alt="MyNewStyle Banner" width="100%" />
 </p>
 
-<h1 align="center"><img src="./public/logostyle.jpg" alt="MyNewStyle Banner" width="100%" /></h1>
+<h1 align="center"><img src="./public/logostyle.png" alt="MyNewStyle Banner" width="100%" /></h1>
 
 <p align="center">
   <strong>Wear Your Confidence.</strong><br/>
